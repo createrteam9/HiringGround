@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InterviewSanctuary — Live Session</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#FFFFFF",
+              "surface-container-lowest": "#FAFAFA",
+              "surface": "#FAFAFA",
+              "error": "#DC2626",
+              "surface-container": "#FFFFFF",
+              "primary": "#A5BBFC",
+              "on-surface": "#0A2156",
+              "secondary": "#666666",
+              "on-primary": "#0A2156",
+              "tertiary-container": "#F0F3FA",
+              "outline-variant": "rgba(220, 220, 220, 0.4)",
+              "primary-container": "#D5E2FF",
+              "on-primary-container": "#0A2156"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "mono": ["JetBrains Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #FAFAFA;
+        color: #0A2156;
+        overflow: hidden;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(12px);
+      }
+      .code-editor-bg { background-color: #FFFFFF; }
+      .speaking-glow {
+        box-shadow: 0 0 15px rgba(165, 187, 252, 0.4);
+        border: 2px solid #A5BBFC;
+      }
+      /* Light syntax highlighting */
+      .token-keyword { color: #D73A49; }
+      .token-function { color: #6F42C1; }
+      .token-class { color: #005CC5; }
+      .token-string { color: #032F62; }
+      .token-comment { color: #6A737D; }
+      .token-operator { color: #D73A49; }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30">
+<!-- Top Session Bar (48px) -->
+<header class="h-12 w-full bg-surface-container-lowest flex items-center justify-between px-4 z-50 border-b border-black/[0.05]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tighter text-on-surface font-headline">InterviewSanctuary</span>
+<div class="h-4 w-[1px] bg-black/10"></div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-on-surface/80">Mock Interview — System Design Round</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Technical</span>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-mono text-lg font-medium text-on-surface tracking-widest">38:24</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-black/5 px-3 py-1 rounded-full">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Professional headshot of a female software engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_lgp2QqjTlOZLu54gA126ZUoxtoHtEy-Goeml5YJmkDnoyveAln4Y0afiZqP0c3zUno6DBrziDtPBZOsFq-gn9r88hmPY_nA9xyjfs7ivMpJccI9K9bt9ooByza8rC_1p5ttgCjl5rN0GfWpV9BIUNJT7IxpvgZd4o4kkvVQ7ktX6C8lJMxEPyyh12MTwpr4TZQeGcGQ6Ads0ND7WA1IBqoGNHeL59iSPpcFLiTsGl1MipBKKrLihjJb_xgEhuWAf8veZNAM3eAwH"/>
+<span class="text-xs font-medium text-on-surface/70">with <span class="text-on-surface font-bold">Priya Sharma · Google</span></span>
+</div>
+<button class="px-4 py-1 border border-error/50 text-error hover:bg-error/5 transition-colors text-xs font-semibold rounded-lg">End Session</button>
+</div>
+</header>
+<!-- Main 2-Column Layout -->
+<main class="flex h-[calc(100vh-48px-80px)] w-full overflow-hidden">
+<!-- LEFT COLUMN: Communication (40%) -->
+<section class="w-[40%] flex flex-col p-4 gap-4 bg-surface">
+<!-- Mentor Video Panel (55%) -->
+<div class="relative flex-grow-[55] basis-0 rounded-2xl overflow-hidden bg-surface-container-low group speaking-glow transition-all duration-500 shadow-sm border border-black/5">
+<img class="w-full h-full object-cover" data-alt="Mentor video call" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnL9V-LR53INmZEk3fXse5o4z1rtkhBIB40pfUgoYpr_Oy_IWvfvyg3J9srnUbdLycfSnm-bi32lxpOTjHBL2qLmJO8kaCezXUgVqvQ-6bLfP9zPWJ4jwQg5QA2hqc7KcbjwUUYndImpSYldJNjVPgKpsn4GjyvzZZezltEF8zz_0z7k9HvcFRw3NcMD7-6FH02aF0OwK7D3nl7p4OLu9RM_IdpoWgS3T_7ufwTnHFyigE5u7uv4va7dEw-Df-L09VK-qX1MmBnCXq"/>
+<div class="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-white/70 backdrop-blur-md rounded-lg shadow-sm border border-black/5">
+<span class="text-xs font-bold text-on-surface">Priya Sharma</span>
+</div>
+<div class="absolute bottom-4 right-4 p-2 bg-primary rounded-full shadow-lg">
+<span class="material-symbols-outlined text-white text-lg" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<div class="absolute top-4 right-4">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+</div>
+<!-- Student Video Panel (45%) -->
+<div class="relative flex-grow-[45] basis-0 rounded-2xl overflow-hidden bg-surface-container-low border border-black/5 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Candidate video feed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaKdL-55hY9qO0xzuAGtMv_4ZX0-9dYUMMc7YbSl-e49rHGn5171aEKO2ZM3PdMjLQzb-xFRKut3JxNwvZl_ECitUHKJTPzjAOEfxmj-ArXshOOrrX8PewGuCWdT7yhXf9iFd4kDXRY-HO7jIxTovVgaq6Chue2lUvy38i1ql2NKW0-c4yKIzT6TI7hkxkqxHbFoXNFGX6bYwhr0Uj6L6JUZ4oggSeJKzHYaOiAgmymGxDkRp4yAYPu2T-pg_zIGfpviCQagipy2pv"/>
+<div class="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-white/70 backdrop-blur-md rounded-lg shadow-sm border border-black/5">
+<span class="text-xs font-bold text-on-surface">You</span>
+</div>
+<div class="absolute bottom-4 right-4 p-2 bg-error rounded-full shadow-lg">
+<span class="material-symbols-outlined text-white text-lg">mic_off</span>
+</div>
+</div>
+<!-- Session Info Strip -->
+<div class="flex items-center justify-between px-6 py-3 bg-white/60 backdrop-blur-md rounded-xl border border-black/[0.05] shadow-sm">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Round</span>
+<span class="text-xs font-bold text-on-surface">System Design</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Questions</span>
+<span class="text-xs font-bold text-on-surface">2/4</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Difficulty</span>
+<span class="text-xs font-extrabold text-error">Hard</span>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Work (60%) -->
+<section class="w-[60%] flex flex-col p-4 pl-0 gap-4">
+<!-- Code Editor (65%) -->
+<div class="flex-grow-[65] basis-0 flex flex-col rounded-2xl overflow-hidden code-editor-bg border border-black/5 shadow-xl">
+<!-- Editor Header -->
+<div class="h-10 flex items-center justify-between px-4 bg-[#F6F8FA] border-b border-black/5">
+<div class="flex items-center gap-px">
+<div class="flex items-center gap-2 px-4 h-10 bg-white border-t-2 border-primary">
+<span class="text-xs font-bold text-on-surface">solution.py</span>
+</div>
+<div class="flex items-center gap-2 px-4 h-10 hover:bg-black/5 cursor-pointer">
+<span class="text-xs font-medium text-secondary">requirements.txt</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-black/5 px-2 py-1 rounded">
+<span class="text-[10px] font-mono text-secondary">Python 3.10</span>
+<span class="material-symbols-outlined text-xs text-secondary">expand_more</span>
+</div>
+<button class="bg-primary text-on-primary font-bold text-xs px-4 py-1.5 rounded-lg hover:brightness-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                        Run Code
+                    </button>
+</div>
+</div>
+<!-- Code Area -->
+<div class="flex-grow flex font-mono text-sm overflow-hidden bg-white">
+<div class="w-12 bg-[#F6F8FA] text-right pr-3 py-4 text-secondary/40 select-none border-r border-black/5">
+                    1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12
+                </div>
+<div class="flex-grow p-4 overflow-y-auto text-on-surface leading-relaxed">
+<span class="token-keyword">class</span> <span class="token-class">LRUCache</span>:<br/>
+                        <span class="token-keyword">def</span> <span class="token-function">__init__</span>(self, capacity: int):<br/>
+                            self.cap = capacity<br/>
+                            self.cache = OrderedDict()<br/><br/>
+                        <span class="token-keyword">def</span> <span class="token-function">get</span>(self, key: int) -&gt; int:<br/>
+                            <span class="token-keyword">if</span> key <span class="token-keyword">not in</span> self.cache:<br/>
+                                <span class="token-keyword">return</span> -1<br/>
+                            self.cache.move_to_end(key)<br/>
+                            <span class="token-keyword">return</span> self.cache[key]
+                </div>
+</div>
+<!-- Editor Footer -->
+<div class="h-8 bg-[#F6F8FA] flex items-center justify-between px-4 text-[10px] text-secondary border-t border-black/5">
+<div class="flex items-center gap-4 font-mono">
+<span>Ln 12, Col 24</span>
+<span>UTF-8</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+<span>Auto-save on</span>
+</div>
+</div>
+</div>
+<!-- Output Panel -->
+<div class="h-10 bg-white border border-black/5 rounded-xl flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+<span class="text-xs font-semibold text-secondary">Console Output</span>
+</div>
+<div class="flex items-center gap-4 text-[10px] font-mono">
+<span class="text-on-surface/60">Runtime: <span class="text-on-surface font-bold">42ms</span></span>
+<span class="text-on-surface/60">Memory: <span class="text-on-surface font-bold">16.3 MB</span></span>
+</div>
+</div>
+<!-- Tabbed Panel (35%) -->
+<div class="flex-grow-[35] basis-0 bg-white rounded-2xl flex flex-col overflow-hidden border border-black/5 shadow-sm">
+<div class="flex border-b border-black/5 bg-[#F8FAFF]">
+<button class="px-6 py-3 text-xs font-bold text-on-surface border-b-2 border-primary">Live Transcript</button>
+<button class="px-6 py-3 text-xs font-bold text-secondary hover:text-on-surface transition-colors">AI Suggestions</button>
+<button class="px-6 py-3 text-xs font-bold text-secondary hover:text-on-surface transition-colors">Notes</button>
+</div>
+<div class="flex-grow p-5 overflow-y-auto space-y-3">
+<div class="flex gap-4 p-3 bg-tertiary-container rounded-lg">
+<span class="text-[10px] font-bold text-on-surface/40 w-12 pt-1 shrink-0">12:04</span>
+<p class="text-sm text-on-surface italic leading-relaxed">"Can you explain why you chose an OrderedDict for this specific implementation? What are the trade-offs?"</p>
+</div>
+<div class="flex gap-4 p-3 bg-white border border-black/5 rounded-lg">
+<span class="text-[10px] font-bold text-on-surface/30 w-12 pt-1 shrink-0">12:12</span>
+<p class="text-sm text-on-surface leading-relaxed">"Using an OrderedDict allows us to maintain the insertion order of keys while providing O(1) average time complexity for lookups and deletions..."</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Floating Control Bar -->
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-12 items-center bg-primary-container/80 backdrop-blur-2xl rounded-full px-12 py-3 border border-white/40 shadow-2xl">
+<!-- Left: Toggles -->
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary hover:brightness-95 shadow-sm transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/60 text-on-surface/80 hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/60 text-on-surface/80 hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined">screen_share</span>
+</button>
+</div>
+<!-- Center: AI & Status -->
+<div class="flex items-center gap-8">
+<button class="px-6 py-2 border border-black/5 bg-white/40 rounded-full text-on-surface font-bold text-xs flex items-center gap-2 hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">psychology</span>
+            Ask AI Coach
+        </button>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface/40 uppercase tracking-widest">Question 2 of 4</span>
+<button class="bg-primary text-on-primary font-bold text-xs px-5 py-2 rounded-full flex items-center gap-2 hover:brightness-95 transition-all shadow-md">
+                Next Question
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="ml-4 bg-error text-white font-bold text-xs px-6 py-2.5 rounded-full hover:brightness-90 transition-all shadow-lg shadow-error/10 uppercase tracking-wider">
+            End Session
+        </button>
+</div>
+</nav>
+</body></html>

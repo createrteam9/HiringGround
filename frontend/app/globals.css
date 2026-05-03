@@ -1,26 +1,95 @@
-@import "tailwindcss";
+@config "../tailwind.config.ts";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fafbfc;
+    --foreground: #2c2f31;
+    --font-headline: 'Manrope', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #1a1c1e;
+      --foreground: #f0f1f3;
+    }
+  }
+
+  body {
+    @apply bg-background text-on-surface font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-display-lg;
+  }
+
+  h2 {
+    @apply text-headline-lg;
+  }
+
+  h3 {
+    @apply text-headline-md;
+  }
+
+  h4 {
+    @apply text-title-lg;
+  }
+
+  p {
+    @apply text-body-md leading-relaxed;
+  }
+
+  a {
+    @apply text-primary hover:text-primary-dim transition-colors;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Glass-morphism card */
+  .glass-card {
+    @apply bg-white/55 backdrop-blur-xl border border-white/40;
+  }
+
+  /* Gradient button */
+  .gradient-button {
+    @apply bg-gradient-to-br from-primary to-primary-container text-white;
+  }
+
+  /* Ghost border */
+  .ghost-border {
+    @apply border border-outline-variant/15;
+  }
+
+  /* Premium card - surface-container-lowest */
+  .card-elevated {
+    @apply bg-surface-container-lowest rounded-md shadow-sm;
+  }
+
+  /* Sectional card - surface-container-low */
+  .card-section {
+    @apply bg-surface-container-low rounded-md;
+  }
+
+  /* Hero text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Focus state for inputs */
+  .input-focus {
+    @apply focus:outline-none focus:border-primary focus:ring-0;
+  }
 }

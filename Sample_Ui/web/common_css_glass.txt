@@ -1,0 +1,101 @@
+/* ==========================================================================
+   SOVEREIGN GLASS - COMMON STYLES (common.css)
+   A unified stylesheet for core UI components, glassmorphism, and tokens.
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --primary-blue: #A5BBFC;
+  --primary-soft: #C7D2FE;
+  --navy-dark: #0A2156;
+  --text-main: #0A2156;
+  --text-secondary: #666666;
+  --bg-main: #FAFAFA;
+  --bg-secondary: #F0F3FA;
+  --accent-warm: #F0D5BA;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(220, 220, 220, 0.4);
+  --glass-blur: blur(12px);
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(10, 33, 86, 0.04);
+  --shadow-md: 0 10px 15px -3px rgba(10, 33, 86, 0.08);
+}
+
+/* Base Reset & Typography */
+body {
+  font-family: 'Inter', 'Manrope', system-ui, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glass Cards */
+.sg-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sg-card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.sg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+}
+
+.sg-btn--primary {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.sg-btn--primary:hover {
+  background-color: #8fa9f7;
+  transform: scale(1.02);
+}
+
+.sg-btn--outline {
+  background: transparent;
+  border: 1px solid var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.sg-btn--outline:hover {
+  background: rgba(165, 187, 252, 0.1);
+}
+
+/* Badges & Pills */
+.sg-badge {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sg-badge--accent {
+  background-color: var(--accent-warm);
+  color: #8b5e3c;
+}
+
+/* Typography Helpers */
+.sg-heading-xl { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.sg-heading-lg { font-size: 32px; font-weight: 700; }
+.sg-text-muted { color: var(--text-secondary); line-height: 1.6; }

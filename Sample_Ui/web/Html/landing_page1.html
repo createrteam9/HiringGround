@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign AI | Practice Real Interviews with Industry Experts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-heading { color: #0A2156; }
+        .bg-surface-main { background-color: #FAFAFA; }
+    </style>
+</head>
+<body class="bg-surface-main font-body text-on-surface-variant selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-white/55 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 h-16 max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-headline font-bold tracking-tighter text-[#0A2156]">CognitiveSanctuary</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Dashboard</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Mentors</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Practice</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors px-4 py-2">Sign In</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-headline font-bold text-sm shadow-md hover:opacity-90 transition-all active:scale-[0.98]">Get Started</button>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative px-8 pt-24 pb-32 max-w-7xl mx-auto overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-primary uppercase bg-primary-fixed rounded-full">The Cognitive Sanctuary</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-heading leading-[1.1] tracking-tight mb-8">
+                        Practice Real <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Interviews</span> with Industry Experts.
+                    </h1>
+<p class="text-lg md:text-xl text-on-surface-variant mb-10 max-w-lg leading-relaxed">
+                        Master the art of the interview through editorial-grade simulations. Transition from high-anxiety to authoritative calm with AI-driven insights.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-full font-headline font-bold text-lg shadow-lg hover:opacity-90 transition-all active:scale-[0.98]">
+                            Get Started
+                        </button>
+<button class="bg-surface-container-lowest border border-outline-variant/20 px-8 py-4 rounded-full font-headline font-bold text-lg text-heading hover:bg-surface-container-low transition-all">
+                            View Mentors
+                        </button>
+</div>
+<div class="mt-12 flex items-center gap-4 text-sm text-slate-500">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="close-up portrait of a professional woman with a confident smile in an office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6s4uayIDG1dfXCrXgTZjo4d2VxDB0P0zCbOSrlAYh5HgLenaj8cAU9j1nUWRsbvhfplN1ZsZ03H8hM3VKCz3oNblWzxfA8TR5RFO5lrn2nCfH8lv4Yplfh_4z00Er1eT3Ta5lBKDmZgIg9QPJ9Qa6UouTo_uiIJQJdutv1NLowL8pgiZjshQN-MIEQMC9G9CZ-JYxByBdk90yqO_5jYNE7ByqaQzf8_OzopR6W0ksgrJKRM561ymNxyQ3SDII1AQ3m7MGVlcTmkWZ"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="professional man in a smart casual outfit looking directly at the camera with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc-zB9G-LntiQijoSwrNVT3T39gEiKgb17Hy6orzV0TU1zADxbSCtA9zhtQKiDDPjEAPagPLevFKWm8k1t3jHRQBJL_TpZ8laCwvwvpYb_pM2ZdUnyrkSRxcQFOJQjNczZkDsSu6VoZp1VHZMCb_41use5echNPdeXbMwa7-m63b9WYVFUxZ31SE635aya4iVKPW-S7tXbp9-xZYv1nOTYh8qgnnFbySsVSvojDr-id0A4ZXt4SlqDxHKoWaVWklhdZOMZvM9B7k6N"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="diverse male professional with a warm expression in a modern coworking environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDucTWeVknJii9VYkW8G_SiRopxlIiDRhKpvf7Q7yIs7nmeeB0VGTexY-BXXCCNbfRX6eBILMgliipALpkBs4miWqgrSLJD8sHfHTRUNecKJ77fsSsnbGhQ4tij6QSPIrYiowApULc5yyHW-zSSnaWtCIH45s18TwtjQ86j3wFFXrBtDeJUQTsGNExkAjgDgzeJ4LS0nvREAiF3Q_-VZLxnezedTFpJ_0hmMBa1yHcZvr107kwbncwb6VZ1vesNRRLPrxPnY21_nYCy"/>
+</div>
+<p>Joined by 2,000+ candidates this month</p>
+</div>
+</div>
+<div class="relative">
+<!-- Asymmetric Hero Visual -->
+<div class="relative z-10 glass-card p-4 rounded-2xl shadow-2xl overflow-hidden border border-white/40">
+<img class="rounded-xl w-full h-[500px] object-cover" data-alt="a high-definition video call interface showing a professional mentor giving feedback to a candidate with overlaying performance charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFVW6qJhAABO51_RQgQnl4zTB1AQVBLDzt8mAcUgaoetzktU9GR-M6ElARgLpBmOzCJrIEIf3NyJdO4KTNbxna7hx2SRwKD5BQ4W8tR68Yb73MpWiLFUK4u_HJ4w7m1mvKQZXqccbtX541avDA5MzOJNlB6g4r5WnbSkngZxPLYFWF48XwTLJtU6V-K6mMWHXpMps1Gq0c-_fPmMxSZxG0njhG8WK9hJuv9z2vsSGkb6Hayn8_WX4NOInm6ivT3NQjaG8-BvqcUlzv"/>
+<div class="absolute bottom-8 right-8 glass-card p-6 rounded-xl shadow-xl border border-white/50 max-w-xs">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-headline font-bold text-heading">Real-time Clarity</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">AI analyzes your tone, pacing, and keyword relevance to provide instantaneous behavioral corrections.</p>
+</div>
+</div>
+<!-- Background Decor -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -left-12 w-96 h-96 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Trust Signals -->
+<section class="py-16 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-center font-headline font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-10">Trusted by candidates now at</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="text-2xl font-headline font-black text-heading">GOOGLE</span>
+<span class="text-2xl font-headline font-black text-heading">STRIPE</span>
+<span class="text-2xl font-headline font-black text-heading">LINEAR</span>
+<span class="text-2xl font-headline font-black text-heading">AIRBNB</span>
+<span class="text-2xl font-headline font-black text-heading">VERCEL</span>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-4xl font-extrabold text-heading tracking-tight mb-4">Master the Narrative.</h2>
+<p class="text-on-surface-variant max-w-xl text-lg">Our platform is designed to emulate the physical presence of a high-stakes interview environment.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Card -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/5">
+<div>
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">video_chat</span>
+<h3 class="font-headline text-2xl font-bold text-heading mb-4">Live Mock Interviews</h3>
+<p class="text-on-surface-variant leading-relaxed max-w-md">Connect with industry veterans from FAANG and high-growth startups for 1-on-1 simulations that mirror the exact pressure of the real thing.</p>
+</div>
+<div class="mt-12 flex items-center gap-4 group cursor-pointer">
+<span class="font-headline font-bold text-primary group-hover:underline">Explore Mentor Network</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Secondary Card -->
+<div class="bg-tertiary-container p-10 rounded-2xl shadow-sm border border-outline-variant/5">
+<span class="material-symbols-outlined text-on-tertiary-container mb-6 text-4xl">description</span>
+<h3 class="font-headline text-2xl font-bold text-on-tertiary-container mb-4">Feedback Reports</h3>
+<p class="text-on-tertiary-fixed-variant leading-relaxed">Editorial-grade review of your performance, broken down by technical accuracy and soft-skill proficiency.</p>
+</div>
+<!-- AI Recommendations -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">psychology</span>
+<h3 class="font-headline text-2xl font-bold text-heading mb-4">AI Recommendations</h3>
+<p class="text-on-surface-variant leading-relaxed">Dynamic growth plans generated after every session, highlighting the exact areas where you need more polish.</p>
+</div>
+<!-- Wide Feature -->
+<div class="md:col-span-2 relative overflow-hidden bg-[#0A2156] p-10 rounded-2xl flex items-center shadow-xl">
+<div class="relative z-10 w-full md:w-1/2">
+<h3 class="font-headline text-2xl font-bold text-white mb-4">The Focus Glass Engine</h3>
+<p class="text-slate-300 leading-relaxed mb-8">Our proprietary environment removes UI friction, allowing you to focus purely on human interaction while AI works silently in the background.</p>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full font-headline font-bold text-sm">See it in action</button>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/2 hidden md:block">
+<div class="h-full w-full bg-gradient-to-l from-primary/30 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics/Stats Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+<div>
+<p class="font-headline text-5xl font-extrabold text-heading mb-2">94%</p>
+<p class="text-sm text-slate-500 font-medium tracking-wide uppercase">Offer Success Rate</p>
+</div>
+<div>
+<p class="font-headline text-5xl font-extrabold text-heading mb-2">12k+</p>
+<p class="text-sm text-slate-500 font-medium tracking-wide uppercase">Mock Sessions</p>
+</div>
+<div>
+<p class="font-headline text-5xl font-extrabold text-heading mb-2">450+</p>
+<p class="text-sm text-slate-500 font-medium tracking-wide uppercase">Industry Mentors</p>
+</div>
+<div>
+<p class="font-headline text-5xl font-extrabold text-heading mb-2">35%</p>
+<p class="text-sm text-slate-500 font-medium tracking-wide uppercase">Avg. Salary Increase</p>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl font-extrabold text-heading text-center mb-20 tracking-tight">The candidate experience.</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest p-12 rounded-2xl border border-outline-variant/10">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-xl font-body italic text-on-surface-variant mb-10 leading-relaxed">
+                        "The Cognitive Sanctuary changed how I perceive high-pressure calls. The AI feedback on my pacing was a wake-up call I didn't know I needed."
+                    </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="professional male portrait with short hair wearing a navy blue shirt, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT3Pm9WFTd7nOzHCG5Z_bm0dQtilI5k3F2kdRuP94L4YiZ_F7mw2SRpQ4Ob0MZknDCkanCpuLWFZBIicwcOGhDpsjZb_VelRC80l86-WNx7otRz3w3fetbv4DjCKABmCMAOtVDR_rmCcFAuVxEOKcXoK5URi9pHRSzZI0CmEjNAdEvU63bUmGeTmFPjnjgoJ9VbKtJmIK4SdA6_bScGI8Q1ES9Oy5ISVn-SZyIInfBU7gbBa4ycDCyuIRgvd1z7gmKr3OyvRUhmPxi"/>
+<div>
+<p class="font-headline font-bold text-heading">Marcus Thorne</p>
+<p class="text-xs text-slate-500 uppercase font-bold tracking-tighter">Senior Engineer @ Stripe</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-12 rounded-2xl border border-outline-variant/10">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-xl font-body italic text-on-surface-variant mb-10 leading-relaxed">
+                        "The mentors here don't just ask questions—they teach you the mindset behind the rubric. I landed three offers within two weeks of my last session."
+                    </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="close-up of a smiling young woman with dark curly hair in a bright professional environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBfJTyD6vFb4848AbcTmobSYwvxQsp-5g_NXs4pmCP71_iLglRwQaPhhzivEywPFjeNgSjQlsVsqNgNS5TUkOIj_riwa1JCo5b3A_dAQBEybDd3ThZ_EJ7fk_VWUk9pbIlqPwku8YCdqvc14uFak5z1Y0AYk8H6ookl0R3D2ZwaP63EyYO42_FNGy1YhqWOUaUzgRMZROOxK3EtgqfkxnBxZaMeEEZwWiJn9ecP_BVMe7ZMF4TTERB6BtWZhFTGyBIuNzbnycxqBCD"/>
+<div>
+<p class="font-headline font-bold text-heading">Elena Rodriguez</p>
+<p class="text-xs text-slate-500 uppercase font-bold tracking-tighter">Product Lead @ Linear</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-8">
+<div class="max-w-5xl mx-auto glass-card p-16 rounded-[2rem] text-center border border-white/40 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-primary-container/20 -z-10"></div>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-heading mb-6 tracking-tight leading-tight">Ready to master your next <br/>career-defining moment?</h2>
+<p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto">Join the hundreds of candidates who have transitioned from nervous applicants to confident experts this month.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-10 py-4 rounded-full font-headline font-bold text-lg shadow-lg hover:opacity-90 transition-all active:scale-[0.98]">Get Started Now</button>
+<button class="bg-white border border-outline-variant/30 px-10 py-4 rounded-full font-headline font-bold text-lg text-heading hover:bg-slate-50 transition-all">Schedule a Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#F3F3F3] bg-[#FAFAFA]">
+<div class="max-w-7xl mx-auto py-16 px-8 flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-xs">
+<span class="font-headline font-bold text-2xl text-[#0A2156] block mb-6">Cognitive Sanctuary</span>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">Editorial Grade Interview Prep for the modern professional. Built for clarity, powered by human expertise.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">chat</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">mail</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div>
+<h4 class="font-headline font-bold text-[#0A2156] mb-6 text-sm uppercase tracking-widest">Platform</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Dashboard</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mentors</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Practice Rooms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Growth Plans</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-[#0A2156] mb-6 text-sm uppercase tracking-widest">Company</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Success Stories</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press Kit</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-[#0A2156] mb-6 text-sm uppercase tracking-widest">Legal</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto py-8 px-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-inter text-xs tracking-wide text-slate-400">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+<div class="flex gap-6 text-xs text-slate-400">
+<span>Designed for focus</span>
+<span>•</span>
+<span>Secured with AES-256</span>
+</div>
+</div>
+</footer>
+</body></html>
