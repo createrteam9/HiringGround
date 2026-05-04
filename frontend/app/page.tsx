@@ -1,3 +1,5 @@
+'use client'; 
+
 import HeroSection from '@/app/components/sections/HeroSection';
 import FeatureCard from '@/app/components/sections/FeatureCard';
 import TestimonialCard from '@/app/components/sections/TestimonialCard';
@@ -5,6 +7,7 @@ import TrustSignals from '@/app/components/sections/TrustSignals';
 import GlassCard from '@/app/components/ui/GlassCard';
 import Button from '@/app/components/ui/Button';
 import Container from '@/app/components/layout/Container';
+import { use } from 'react';
 
 const InterviewIcon = () => (
   <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
