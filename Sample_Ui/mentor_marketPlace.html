@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign AI | Mentor Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 220, 220, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/55 dark:bg-slate-900/55 backdrop-blur-xl shadow-sm dark:shadow-none h-16 flex justify-between items-center px-8 max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#0A2156] font-headline">CognitiveSanctuary</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Dashboard</a>
+<a class="font-headline tracking-tight font-bold text-sm text-[#465C97] border-b-2 border-[#465C97] pb-1" href="#">Mentors</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Practice</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 font-headline font-bold text-sm hover:text-[#0A2156]">Sign In</button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2 rounded-full font-headline font-bold text-sm shadow-md hover:opacity-90 active:scale-[0.99] transition-all">Get Started</button>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- Sidebar Filters -->
+<aside class="hidden lg:flex flex-col w-72 h-[calc(100vh-64px)] fixed left-0 top-16 bg-surface-container-low p-8 overflow-y-auto z-40">
+<div class="mb-10">
+<h2 class="font-headline text-lg font-bold text-on-secondary-fixed mb-6">Filters</h2>
+<!-- Search Skills -->
+<div class="mb-8">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Skills</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl text-sm px-4 py-3 focus:ring-2 focus:ring-primary-fixed outline-none placeholder:text-outline transition-all" placeholder="Search skills..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline text-lg" data-icon="search">search</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold rounded-full uppercase tracking-tighter">System Design</span>
+<span class="px-3 py-1 bg-surface-container-lowest text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-tighter border border-outline-variant">LLMs</span>
+<span class="px-3 py-1 bg-surface-container-lowest text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-tighter border border-outline-variant">Python</span>
+</div>
+</div>
+<!-- Domain -->
+<div class="mb-8">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Domain</label>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-fixed" type="checkbox"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary transition-colors">Engineering</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-fixed" type="checkbox"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary transition-colors">Product Management</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-fixed" type="checkbox"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary transition-colors">Data Science</span>
+</label>
+</div>
+</div>
+<!-- Experience -->
+<div class="mb-8">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Experience</label>
+<div class="space-y-2">
+<input class="w-full h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="20" min="1" type="range" value="10"/>
+<div class="flex justify-between text-[10px] font-bold text-outline">
+<span>1 Year</span>
+<span>20+ Years</span>
+</div>
+</div>
+</div>
+<!-- Pricing -->
+<div class="mb-8">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Price Range</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant text-center">
+<span class="text-[10px] text-outline block">Min</span>
+<span class="text-sm font-bold text-on-surface">$50</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant text-center">
+<span class="text-[10px] text-outline block">Max</span>
+<span class="text-sm font-bold text-on-surface">$250</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-on-secondary-fixed text-white font-headline font-bold text-sm rounded-xl hover:bg-on-secondary-fixed-variant transition-colors">Apply Filters</button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-72 p-8 lg:p-12 min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div class="max-w-2xl">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-secondary-fixed mb-4">Expert Mentors</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed">Connect with top-tier AI and Engineering leaders. Specialized preparation for editorial-grade interviews.</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container px-4 py-2 rounded-full">
+<span class="text-sm font-medium text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-sm font-bold text-on-surface focus:ring-0 cursor-pointer">
+<option>Highest Rated</option>
+<option>Price: Low to High</option>
+<option>Experience</option>
+</select>
+</div>
+</header>
+<!-- Mentor Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Mentor Card 1 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:text-primary transition-colors cursor-pointer" data-icon="favorite">favorite</span>
+</div>
+<div class="flex items-start gap-5 mb-6">
+<div class="relative">
+<img class="w-20 h-20 rounded-2xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="professional portrait of a confident middle-aged man with short hair and a warm smile, wearing a casual navy blazer in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1CuZSwAn1C34TglK54nsUFXeBOfYdew48ZxFUmg-z53KJ7LZfiSbj1Hlg5Vbp1IYn61FvHknUXRMAxdJyUIylB8ZouC_O6oACTiWWArDFSEewAxm0BE8ILKxvXo86jZdBjT0nbybYjbO3hAEn8V8x-krUch5WF02jaMyCaibEKEEi8xMJ58qJHU9l4X0yvXhYL1oC0tKti17w83Z5Qn9XFgNQ9ILLfUuScQqMk2rOdivqsRc1J7-HtPcJdZVvxE6QiUz5YhYD3PPj"/>
+<div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-md">
+<span class="material-symbols-outlined text-green-500 text-sm fill-current" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-1">Marcus Thorne</h3>
+<p class="text-sm text-primary font-semibold">Staff Engineer @ Anthropic</p>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-sm fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(142 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="work_history">work_history</span>
+<span class="text-xs font-medium">12+ years experience</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Large Language Models</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Distributed Systems</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-xl font-headline font-extrabold text-on-secondary-fixed">$120<span class="text-xs font-normal text-outline">/hr</span></span>
+</div>
+<button class="bg-on-secondary-fixed text-white px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Session</button>
+</div>
+</div>
+<!-- Mentor Card 2 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="favorite">favorite</span>
+</div>
+<div class="flex items-start gap-5 mb-6">
+<div class="relative">
+<img class="w-20 h-20 rounded-2xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="smiling professional woman with glasses and dark curly hair in a minimalist architectural studio with soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBMPQ79Y6sXfbkILYkBK2vFCupwxKBdUZ14Zp_PLAji4R4UBOG99HdRWd91Bi57fvGvM04VYdL8Y4CvHt9W0_h0onjEQPTh9XO-sr58f02Il5yt1C7RPMPa6RrrlBaQ724OeHTYgm3239Xv-ognQv551acW5Y7EAeY_yVHPCQfkMH-tjcg84ZTueXIdKhCx9yK1tg8h5WZd1rBZGwmltlclOnD0m1mPSmQcGkyPSW73nu2ySUFBDPXVAgsMgAh3uoJ8TSZ5JhCS9uW"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-1">Elena Rodriguez</h3>
+<p class="text-sm text-primary font-semibold">Principal PM @ OpenAI</p>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-sm fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">5.0</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(89 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="work_history">work_history</span>
+<span class="text-xs font-medium">8 years experience</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Product Strategy</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">AI Ethics</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-xl font-headline font-extrabold text-on-secondary-fixed">$150<span class="text-xs font-normal text-outline">/hr</span></span>
+</div>
+<button class="bg-on-secondary-fixed text-white px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Session</button>
+</div>
+</div>
+<!-- Mentor Card 3 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="favorite">favorite</span>
+</div>
+<div class="flex items-start gap-5 mb-6">
+<div class="relative">
+<img class="w-20 h-20 rounded-2xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="portrait of a focused young man with glasses wearing a grey cashmere sweater, soft studio lighting with subtle depth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsnrTIr-TCeIsI_84MMG8CLEbL7s0raoiU6fTH3YiWKXCg3WoeFLvjrRmSzCTx-q17UKyCnj-OUa7dR50k35AzAhMthRGiQNxWCWmiy1ALaFaNBsp0K3x7WyxYdKO6xn_y38Odq-ngKxWE4R_J4KKyUq7mMK_tSaEfPJAo4E3dFQy4Z1DQub1K225V0fL9Bq9Qp3ngQPRTKnPLRWMb0pY6ohg7kXKdlNjRuuSLSR2kHFpZ1NaJfeSHUItDZtCJ1hFyu42SfcnccxG"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-1">David Chen</h3>
+<p class="text-sm text-primary font-semibold">Senior SWE @ DeepMind</p>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-sm fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.8</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(215 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="work_history">work_history</span>
+<span class="text-xs font-medium">10+ years experience</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Deep Learning</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Rust</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-xl font-headline font-extrabold text-on-secondary-fixed">$110<span class="text-xs font-normal text-outline">/hr</span></span>
+</div>
+<button class="bg-on-secondary-fixed text-white px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Session</button>
+</div>
+</div>
+<!-- Mentor Card 4 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="favorite">favorite</span>
+</div>
+<div class="flex items-start gap-5 mb-6">
+<div class="relative">
+<img class="w-20 h-20 rounded-2xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="cheerful man with beard in a white tech t-shirt, sitting in a bright creative loft office with indoor plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2huPmMdc7i-mr4uaU-5c7qUH40MsByJmyuFA0xYMXzzs0szSXerhOAcyHwmRHFibhHmbGbannYGdbOnIcyXLhnGBqmqybXPZy60xNHFqHQm9nly-F_Q6rMumVJ2FAVtGUJfIDqS8S9nkXVE3nhT8poeimEK6EMWSZTfghcrsJYTFxGflmcpcHk6ntXJod3fhpgx_cTqVGNo1U9hl6koNFj7LGhD6BIe375NTclLWntTdRb_yt1jTyeiiTRb7hpNYNL9uhuUteH_oJ"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-1">Samir Malik</h3>
+<p class="text-sm text-primary font-semibold">Technical Lead @ NVIDIA</p>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-sm fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(56 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="work_history">work_history</span>
+<span class="text-xs font-medium">15 years experience</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">CUDA</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">GPU Optimization</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-xl font-headline font-extrabold text-on-secondary-fixed">$200<span class="text-xs font-normal text-outline">/hr</span></span>
+</div>
+<button class="bg-on-secondary-fixed text-white px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Session</button>
+</div>
+</div>
+<!-- Mentor Card 5 -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="favorite">favorite</span>
+</div>
+<div class="flex items-start gap-5 mb-6">
+<div class="relative">
+<img class="w-20 h-20 rounded-2xl object-cover shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="elegant professional woman with tied-back hair and a warm expression, wearing a minimalist black turtleneck in a soft-lit room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGhuNS8wVKBybgFFugKue9YXURvwBzipTBqHYuaws0sFIB49lBeutpXUT346m433-A2oIhM0aGxVJp77pbX00-cBjhZm7njdBXTWTIZdwbH_qI3NGq8KNDTrW-DIi_qAJUJgkqYACOixrbwWKUHeDtXdSJEY-w-gNgCpLG2jRq2hC3oZVJF3c6LPo-B-6dX0W4NwVbNdiDPDbb1xydQ0WgNy-219rybR_8XnYlpBU8fF_jV3ITMDM7aHGfvIqk72rpq9s-EisGUk7y"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-1">Sarah Jenkins</h3>
+<p class="text-sm text-primary font-semibold">Head of Data @ Mistral</p>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-sm fill-current" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(112 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="work_history">work_history</span>
+<span class="text-xs font-medium">9 years experience</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">Data Engineering</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant">PyTorch</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-xl font-headline font-extrabold text-on-secondary-fixed">$140<span class="text-xs font-normal text-outline">/hr</span></span>
+</div>
+<button class="bg-on-secondary-fixed text-white px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Session</button>
+</div>
+</div>
+<!-- Empty "Become a Mentor" Card -->
+<div class="border-2 border-dashed border-outline-variant rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 group cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</div>
+<div>
+<h3 class="font-headline text-lg font-bold text-on-secondary-fixed mb-2">Join as Mentor</h3>
+<p class="text-sm text-on-surface-variant max-w-[200px]">Help others reach their potential and earn as you mentor.</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-20 pt-12 border-t border-surface-container-high w-full">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-manrope font-bold text-[#0A2156] mb-2 text-lg">Cognitive Sanctuary</span>
+<p class="font-inter text-xs tracking-wide text-slate-500">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Cookie Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Floating Action Button - suppressed as per mandate for marketplace/details views, but could be present for "Quick Help" if needed. Explicitly omitted to focus on canvas. -->
+</body></html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #FAFAFA;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="font-body text-on-surface-variant antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/55 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 h-16 max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#0A2156] font-headline">CognitiveSanctuary</span>
+<div class="hidden md:flex space-x-6">
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Dashboard</a>
+<a class="font-headline tracking-tight font-bold text-sm text-[#465C97] border-b-2 border-[#465C97] pb-1" href="#">Mentors</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Practice</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="font-headline tracking-tight font-bold text-sm text-slate-500 transition-colors px-4 py-2 rounded-full hover:bg-slate-50/50">Sign In</button>
+<button class="bg-gradient-to-r from-[#465C97] to-[#A5BBFC] text-white px-6 py-2 rounded-full font-headline tracking-tight font-bold text-sm hover:opacity-90 active:scale-[0.99] transition-all shadow-md">Get Started</button>
+</div>
+</nav>
+<main class="pt-24 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Column: Profile Bio & Details -->
+<div class="lg:col-span-8 space-y-10">
+<!-- Profile Header -->
+<section class="flex flex-col md:flex-row gap-8 items-start">
+<div class="relative w-32 h-32 md:w-40 md:h-40 shrink-0">
+<img alt="Mentor Portrait" class="w-full h-full object-cover rounded-xl shadow-lg" data-alt="Portrait of a sophisticated male mentor in a minimalist studio setting with soft natural light and a calm professional expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeHE4ZJ0CCFdyFhjnYvDmcq6VTrndA_4SFWOqIvMSbfHy6UskVG8iFmA00naVA8LwjOj59_qqbP5Ani_V7Q7-nDHMzgkvRKI9U1z8wGwbHHgP4uId9Ue1UDlqGzZbVSfFyu2gFH8BAZYSsuhqzLE4G-hhmr2xxnLqC14oduS_CoOJop5kMG4TEgarIkSoLJfT1iUlgtGNxPJM2CenFQRaRTnGaal_MNm452ygPuKbBNqDuPCec4kLKQvW8FEeUJM7puj_APqQd3eSZ"/>
+<div class="absolute -bottom-2 -right-2 bg-primary-container text-on-primary-container p-1.5 rounded-lg shadow-sm border-2 border-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex flex-wrap items-center gap-4">
+<h1 class="text-4xl font-extrabold tracking-tighter text-[#0A2156] font-headline">Sovereign AI</h1>
+<span class="bg-tertiary-container/30 text-on-tertiary-container px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase">Technical Lead &amp; AI Specialist</span>
+</div>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                            Pioneering clarity in technical interviews. I specialize in helping senior candidates navigate complex architectural discussions and AI-driven systems design.
+                        </p>
+<div class="flex items-center gap-6 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#465C97] text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[#0A2156]">4.9</span>
+<span class="text-slate-400 text-sm">(124 sessions)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#465C97] text-lg">schedule</span>
+<span class="text-slate-600 text-sm">Response time: 2hrs</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Experience -->
+<section class="space-y-6">
+<h2 class="text-2xl font-bold tracking-tight text-[#0A2156] font-headline">About the Mentor</h2>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm space-y-6">
+<p class="text-[#666] leading-7">
+                            With over 12 years of experience at top-tier tech firms (including Google and Anthropic), Sovereign AI brings a unique perspective to the interview process. The focus isn't just on getting the "right" answer, but on articulating thought processes and demonstrating technical leadership under pressure.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex gap-4 p-4 rounded-lg bg-surface-container-low transition-transform hover:translate-x-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+<div>
+<h4 class="font-bold text-[#0A2156] text-sm">Systems Design</h4>
+<p class="text-xs text-slate-500">Mastering distributed systems and scale-ready architecture.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-lg bg-surface-container-low transition-transform hover:translate-x-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<div>
+<h4 class="font-bold text-[#0A2156] text-sm">Behavioral Mastery</h4>
+<p class="text-xs text-slate-500">Navigating high-stakes leadership and conflict resolutions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills -->
+<section class="space-y-4">
+<h2 class="text-2xl font-bold tracking-tight text-[#0A2156] font-headline">Core Expertise</h2>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">Distributed Systems</span>
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">LLM Fine-Tuning</span>
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">Leadership Framing</span>
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">Golang</span>
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">Kubernetes</span>
+<span class="px-4 py-2 bg-white text-[#465C97] text-sm font-medium rounded-full shadow-sm">Machine Learning Ops</span>
+</div>
+</section>
+<!-- Reviews -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="text-2xl font-bold tracking-tight text-[#0A2156] font-headline">Candidate Feedback</h2>
+<button class="text-primary text-sm font-bold hover:underline">View all 124 reviews</button>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-tertiary shadow-sm">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-slate-200">
+<img alt="User Avatar" class="w-full h-full object-cover rounded-full" data-alt="Close-up headshot of a diverse young professional man smiling against a neutral blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuBOxRZa20iTYbXJ3Kd1wQdFICUvDXjMaXy8ohmeDZ0cI_F_mQ6KNBQMvt793wEi7rMyF8ooAXRWnoFI0s7CHjNg1zeofjuiO2VpD2pcOd8n9k33gYfdmzGLFqiBUm00hhnHjNFIFZEMbF6ydxlKTaaNORTzo9HaxQqLeDqdIzcmmUJXOfUXXgOIXt4DmC_viWA1XCwdEQmkqUNcoCsDUzdxL0fOw3fWK3QCt6vES0bEjCnJ4ufzYCKO0VxY1v_xfjc4aNDOReIuY7"/>
+</div>
+<div>
+<div class="font-bold text-sm text-[#0A2156]">Alex R.</div>
+<div class="flex text-xs text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="text-sm text-slate-600 italic">"The session on distributed systems was a game-changer. Sovereign helped me simplify complex concepts that I used to struggle with during interviews. I landed my Staff role at a FinTech firm a week later!"</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-primary-container shadow-sm">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-slate-200">
+<img alt="User Avatar" class="w-full h-full object-cover rounded-full" data-alt="Professional woman with glasses smiling confidently in a bright airy office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiT4NG3ygTywN46HoEmiAEYW8TTrCYpGYzPM0r0ChNki_mkJs3o2VjXmpMRE7tmIHs6UgxW3xZRnRrDIfZkx-H5Q0fqgTVeTfyBDi0IeVnxPkDhrm6nz5HunmCCIhB8cpuHmmhyniWYR4S4FF8zIyVLqYFbOa6-vmaAk4p8Wtsxcr6YpSK4YT4Y15m_nWGgC9F5HuKSRQjsVqjVdn1J_2TbXm8Yb6F9H4ygJ4ldb-8210hOQ0SloeDK7Ke8LzUvb_GqsS0V7j6fc1q"/>
+</div>
+<div>
+<div class="font-bold text-sm text-[#0A2156]">Sarah J.</div>
+<div class="flex text-xs text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="text-sm text-slate-600 italic">"Very clinical yet supportive. Sovereign doesn't just give feedback; they provide an editorial framework for how to present your best self. Highly recommended for senior transitions."</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Booking & Availability -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 space-y-6">
+<!-- Booking Card -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl overflow-hidden p-6 border border-slate-100/50">
+<h3 class="text-xl font-bold text-[#0A2156] font-headline mb-6">Select Your Session</h3>
+<!-- Availability Calendar Visualizer -->
+<div class="space-y-4 mb-8">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-semibold text-slate-700">October 2024</span>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-slate-100 rounded-md transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:bg-slate-100 rounded-md transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<button class="h-8 flex items-center justify-center text-xs rounded-full text-slate-300 cursor-not-allowed">14</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full text-slate-300 cursor-not-allowed">15</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full hover:bg-slate-100 transition-colors">16</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full bg-primary text-white font-bold shadow-md">17</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full hover:bg-slate-100 transition-colors">18</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full hover:bg-slate-100 transition-colors">19</button>
+<button class="h-8 flex items-center justify-center text-xs rounded-full hover:bg-slate-100 transition-colors">20</button>
+</div>
+</div>
+<!-- Time Slots -->
+<div class="space-y-3 mb-8">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Available Slots (PT)</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 text-xs font-medium rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition-all text-center">09:00 AM</button>
+<button class="py-2 text-xs font-medium rounded-lg bg-primary-fixed text-primary border border-transparent text-center font-bold">11:30 AM</button>
+<button class="py-2 text-xs font-medium rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition-all text-center">02:00 PM</button>
+<button class="py-2 text-xs font-medium rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition-all text-center">04:30 PM</button>
+</div>
+</div>
+<!-- Session Types -->
+<div class="space-y-4 mb-8">
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between border-2 border-primary-container/20">
+<div>
+<div class="text-sm font-bold text-[#0A2156]">Mock Simulation</div>
+<div class="text-[11px] text-slate-500">60 mins • Technical Focus</div>
+</div>
+<div class="text-sm font-bold text-primary">$180</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low rounded-xl flex items-center justify-between transition-colors cursor-pointer group">
+<div>
+<div class="text-sm font-bold text-slate-600 group-hover:text-[#0A2156]">Resume Deep Dive</div>
+<div class="text-[11px] text-slate-400">30 mins • Framing Review</div>
+</div>
+<div class="text-sm font-bold text-slate-500">$95</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-headline font-extrabold text-sm py-4 rounded-full shadow-lg shadow-primary/10 hover:opacity-95 active:scale-95 transition-all">
+                            Book Session
+                        </button>
+<p class="text-[10px] text-center text-slate-400 mt-4 uppercase tracking-tighter">Secure checkout via Stripe</p>
+</div>
+<!-- Trust Indicators -->
+<div class="bg-[#F3F3F3] p-6 rounded-2xl space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<span class="text-sm font-bold text-[#0A2156]">Satisfaction Guarantee</span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed">
+                            If you aren't completely satisfied with the insights provided, we'll refund your session or book a follow-up at no cost.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#F3F3F3] bg-[#FAFAFA]">
+<div class="max-w-7xl mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center">
+<div class="flex flex-col mb-8 md:mb-0">
+<span class="font-manrope font-bold text-[#0A2156] text-lg mb-2">Cognitive Sanctuary</span>
+<p class="text-[#666] font-inter text-xs tracking-wide">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-[#465C97] font-inter text-xs transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#465C97] font-inter text-xs transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-[#465C97] font-inter text-xs transition-colors" href="#">Cookie Policy</a>
+<a class="text-slate-500 hover:text-[#465C97] font-inter text-xs transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

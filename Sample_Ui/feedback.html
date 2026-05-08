@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(20px);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ambient-shadow {
+        box-shadow: 0 4px 6px -1px rgba(10, 33, 86, 0.04), 0 10px 15px -3px rgba(10, 33, 86, 0.08);
+      }
+      .cta-gradient {
+        background: linear-gradient(135deg, #465C97 0%, #A5BBFC 100%);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/55 backdrop-blur-xl flex justify-between items-center px-8 h-16 max-w-full shadow-sm">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#0A2156] font-headline">CognitiveSanctuary</span>
+<div class="hidden md:flex items-center space-gap-6 gap-6">
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Dashboard</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Mentors</a>
+<a class="font-headline tracking-tight font-bold text-sm text-[#465C97] border-b-2 border-[#465C97] pb-1" href="#">Practice</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 rounded-full text-sm font-bold text-[#465C97] hover:bg-slate-50/50 transition-all">Sign In</button>
+<button class="px-6 py-2 rounded-full text-sm font-bold text-white cta-gradient shadow-md active:scale-95 transition-transform">Get Started</button>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-16 bg-[#F3F3F3] flex flex-col p-6 space-y-2">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional headshot of a smiling young man in a modern office setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvL6T_GQwEAflNh2ZpqWIxn8PhSLdj4ymAQZsy1ef0CI8iRoH1lxqnStCfETjdfcBv8ZkS4OBXkHIOMXDUPo1mF-rShrGnFiWwCaoj-mCGLehqaKfZmSpqOIFDzzvYBSHz06YQCycfrtwvmOM2oBm5NHANWYtDXoCXjNrh59lVHM3ors8zeOylc4E87GqssjyKkHITvW8kL0Fp5tfMGt9YEeo9Ner2sgRjbV6Bsl0CLHDpHTS509OYeC3lLhPUhYik7WlOkE1HrlD2"/>
+</div>
+<div>
+<p class="text-sm font-headline font-extrabold text-[#0A2156]">Alex Rivers</p>
+<p class="text-xs text-on-surface-variant">Senior Candidate</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-[#0A2156] rounded-lg shadow-sm font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium">My Sessions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium">Mentor Network</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-sm font-medium">Growth Plan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<button class="w-full px-4 py-3 rounded-xl cta-gradient text-white text-sm font-bold flex items-center justify-center gap-2 mb-4 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    Book Session
+                </button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-[#465C97] text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+                    Help Center
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-[#465C97] text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+                    Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 w-full min-h-screen p-8 bg-surface">
+<!-- Hero Header -->
+<header class="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded">Session #842</span>
+<span class="text-on-surface-variant text-sm font-medium">October 24, 2024</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold text-[#0A2156] tracking-tight mb-4">Sovereign AI <span class="text-primary">Performance Analysis</span></h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">An analytical breakdown of your performance during the System Architecture simulation. This report synthesizes AI metrics and mentor observations into a focused growth strategy.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-lowest rounded-xl border border-outline-variant/20 font-bold text-sm text-[#0A2156] flex items-center gap-2 hover:bg-white transition-all ambient-shadow">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span> Export PDF
+                    </button>
+<button class="px-6 py-3 cta-gradient text-white rounded-xl font-bold text-sm shadow-md active:scale-95 transition-transform">Share Report</button>
+</div>
+</header>
+<!-- Bento Grid Performance Overview -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+<!-- Ratings Card -->
+<div class="md:col-span-4 bg-surface-container-lowest p-8 rounded-2xl ambient-shadow flex flex-col justify-between">
+<div>
+<h3 class="font-headline font-bold text-[#0A2156] text-xl mb-6">Core Competencies</h3>
+<div class="space-y-8">
+<!-- Rating 1 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-[#0A2156]">Technical Accuracy</span>
+<span class="text-xl font-headline font-extrabold text-primary">92%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[92%]"></div>
+</div>
+</div>
+<!-- Rating 2 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-[#0A2156]">Communication Clarity</span>
+<span class="text-xl font-headline font-extrabold text-primary">78%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[78%]"></div>
+</div>
+</div>
+<!-- Rating 3 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-[#0A2156]">Confidence Score</span>
+<span class="text-xl font-headline font-extrabold text-primary">85%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-container-low">
+<p class="text-xs text-on-surface-variant leading-relaxed">Composite percentile: <span class="font-bold text-[#0A2156]">Top 5%</span> of Senior Engineering candidates this month.</p>
+</div>
+</div>
+<!-- Strengths & Weaknesses -->
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Strengths Card -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl ambient-shadow">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline font-bold text-[#0A2156] text-xl">Top Strengths</h3>
+</div>
+<ul class="space-y-5">
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Architectural Depth</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Excellent breakdown of microservices vs monolith trade-offs in low-latency environments.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Edge-Case Anticipation</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Proactively identified potential race conditions in the distributed caching layer.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Precise Vocabulary</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Strong command over industry-standard terminology without over-relying on jargon.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Weaknesses Card -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl ambient-shadow">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-headline font-bold text-[#0A2156] text-xl">Growth Areas</h3>
+</div>
+<ul class="space-y-5">
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Time-Boxing Complex Details</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Spent 12 minutes on DB schema details, leaving less time for high-level scaling strategy.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Executive Summary Lack</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Needs to start answers with a 30-second summary before diving into technical depth.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mt-2 flex-shrink-0"></span>
+<div>
+<p class="text-sm font-bold text-[#0A2156] mb-1">Active Listening Pauses</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Interrupted the interviewer twice while they were providing clarifying constraints.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Bottom Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Mentor Comments -->
+<div class="lg:col-span-2 glass-effect p-8 rounded-3xl border border-white/40 shadow-xl relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-[#0A2156] text-xl">Mentor Deep Dive</h3>
+<p class="text-xs text-on-surface-variant font-medium">Session Evaluator: Elena Vance, Principal Engineer</p>
+</div>
+</div>
+<div class="space-y-6 text-on-surface-variant leading-relaxed italic border-l-2 border-tertiary-container pl-6">
+<p class="text-base">"Alex showed remarkable poise when I introduced the 'partial network failure' constraint midway through the session. His instinct to immediately pivot to a cellular architecture demonstrated senior-level maturity."</p>
+<p class="text-base">"The primary area for refinement isn't technical—it's storytelling. He provides the right answers, but needs to weave them into a more cohesive narrative of why certain trade-offs matter to the business stakeholders."</p>
+</div>
+<div class="mt-8 flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-low text-[#0A2156] text-[10px] font-bold tracking-wider uppercase">Senior Architecture</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-low text-[#0A2156] text-[10px] font-bold tracking-wider uppercase">High Scalability</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-low text-[#0A2156] text-[10px] font-bold tracking-wider uppercase">Fault Tolerance</span>
+</div>
+</div>
+<!-- Improvement Suggestions -->
+<div class="bg-surface-container-highest p-8 rounded-2xl flex flex-col">
+<h3 class="font-headline font-bold text-[#0A2156] text-xl mb-6">Action Plan</h3>
+<div class="space-y-4 flex-grow">
+<div class="p-4 bg-white rounded-xl shadow-sm border-l-4 border-primary">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Focus Week 1</p>
+<p class="text-sm font-medium text-[#0A2156]">Practice the "STAR" method for technical explanations.</p>
+</div>
+<div class="p-4 bg-white rounded-xl shadow-sm border-l-4 border-primary-container">
+<p class="text-xs font-bold text-on-primary-container uppercase tracking-widest mb-1">Focus Week 2</p>
+<p class="text-sm font-medium text-[#0A2156]">Complete the "Distributed Systems Depth" practice module.</p>
+</div>
+<div class="p-4 bg-white rounded-xl shadow-sm border-l-4 border-surface-tint">
+<p class="text-xs font-bold text-surface-tint uppercase tracking-widest mb-1">Next Milestone</p>
+<p class="text-sm font-medium text-[#0A2156]">Mock Interview #3 with focus on Communication.</p>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-[#0A2156] text-white rounded-xl font-bold text-sm hover:bg-opacity-90 transition-all">Schedule Next Session</button>
+</div>
+</div>
+<!-- Visual Decorative Detail -->
+<div class="mt-12 opacity-30">
+<img class="w-full h-32 object-cover rounded-3xl grayscale" data-alt="abstract digital visualization of data streams and glowing blue network connections on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO_cqGoxw2IHu287hSkLio2tR6ohAMmSw2iGsV3bpA9DSoQ6SaNOu4JuprjRRSH5KvLfZIxPSYX3nyiU1UM5SlnJ7HiFdf9QogX_tq8Nc__OZbalAbDBQqTrzkRb81-klFKmoAND6ZSrjBo_SBbOFU2XQGxAWk7nDYb6aiMQy5o9G7kWd2EFbiFc872Jcwwe5-PAs15htRG2rX5rhrYyXc34bKHwNqxgA9BL_dkjVEQsaRQzbEvTeHZAv0kmodrn-vA328IyX_juaO"/>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-[#F3F3F3] bg-[#FAFAFA]">
+<div class="max-w-7xl mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center">
+<div class="mb-6 md:mb-0">
+<p class="font-headline font-bold text-[#0A2156] text-lg mb-2">CognitiveSanctuary</p>
+<p class="font-inter text-xs tracking-wide text-slate-500">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Cookie Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

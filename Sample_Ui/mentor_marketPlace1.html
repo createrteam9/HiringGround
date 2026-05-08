@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign AI | Mentor Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 220, 220, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #465c97;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/55 dark:bg-slate-900/55 backdrop-blur-xl shadow-sm dark:shadow-none h-16 flex justify-between items-center px-8 max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#0A2156] font-headline">CognitiveSanctuary</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Dashboard</a>
+<a class="font-headline tracking-tight font-bold text-sm text-[#465C97] border-b-2 border-[#465C97] pb-1" href="#">Mentors</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Practice</a>
+<a class="font-headline tracking-tight font-bold text-sm text-slate-500 hover:text-[#0A2156] transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 font-headline font-bold text-sm hover:text-[#0A2156]">Sign In</button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2 rounded-full font-headline font-bold text-sm shadow-md hover:opacity-90 active:scale-[0.99] transition-all">Get Started</button>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- Sidebar Filters -->
+<aside class="hidden lg:flex flex-col w-72 h-[calc(100vh-64px)] fixed left-0 top-16 bg-surface-container-low p-8 overflow-y-auto z-40">
+<div class="mb-10">
+<h2 class="font-headline text-lg font-bold text-on-secondary-fixed mb-6">Filters</h2>
+<!-- Availability -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Availability</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary">Available Today</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary">Weekend Only</span>
+</label>
+</div>
+</div>
+<!-- Price Range Slider -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Price Range</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="px-1">
+<input class="w-full h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="2500" min="0" type="range" value="1200"/>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-outline">
+<span>₹0</span>
+<span>₹2500+</span>
+</div>
+</div>
+</div>
+<!-- Experience Radio Buttons -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Experience</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 border-outline-variant text-primary focus:ring-primary-container" name="exp" type="radio"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary transition-colors">10+ Years</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 border-outline-variant text-primary focus:ring-primary-container" name="exp" type="radio"/>
+<span class="text-sm text-on-surface font-medium group-hover:text-primary transition-colors">5-10 Years</span>
+</label>
+</div>
+</div>
+<!-- Tech Stack Tags -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Tech Stack</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-lowest text-on-surface-variant text-[10px] font-bold rounded border border-outline-variant uppercase">React</span>
+<span class="px-2 py-1 bg-surface-container-lowest text-on-surface-variant text-[10px] font-bold rounded border border-outline-variant uppercase">Python</span>
+<span class="px-2 py-1 bg-surface-container-lowest text-on-surface-variant text-[10px] font-bold rounded border border-outline-variant uppercase">Go</span>
+</div>
+</div>
+<!-- Company Search -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Company</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl text-sm px-4 py-3 focus:ring-2 focus:ring-primary-fixed outline-none placeholder:text-outline transition-all" placeholder="Search Company" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline text-lg" data-icon="search">search</span>
+</div>
+</div>
+<!-- Rating -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Rating</label>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[#FFB800] text-lg fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[#FFB800] text-lg fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[#FFB800] text-lg fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[#FFB800] text-lg fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1 text-on-surface-variant">&amp; up</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-on-secondary-fixed text-white font-headline font-bold text-sm rounded-xl hover:bg-on-secondary-fixed-variant transition-colors">Apply Filters</button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-72 min-h-screen">
+<!-- Sub-header Navigation -->
+<div class="sticky top-16 z-30 bg-white/80 backdrop-blur-md border-b border-outline-variant px-8 py-3 flex gap-4 overflow-x-auto no-scrollbar">
+<button class="whitespace-nowrap bg-primary text-white px-6 py-2 rounded-full text-sm font-bold shadow-md">Mock Interview</button>
+<button class="whitespace-nowrap bg-white/50 border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full text-sm font-bold hover:border-primary hover:text-primary transition-all">Career Guidance</button>
+<button class="whitespace-nowrap bg-white/50 border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full text-sm font-bold hover:border-primary hover:text-primary transition-all">Stress Consulting</button>
+<button class="whitespace-nowrap bg-white/50 border border-outline-variant text-on-surface-variant px-6 py-2 rounded-full text-sm font-bold hover:border-primary hover:text-primary transition-all">Startup Discussion</button>
+</div>
+<div class="p-8 lg:p-12">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div class="max-w-2xl">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-secondary-fixed mb-4">Top Mentors</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed">Connect with top-tier AI and Engineering leaders. Specialized preparation for editorial-grade interviews.</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="text-xs font-bold text-outline uppercase tracking-widest">128 results found</span>
+<div class="flex items-center gap-4 bg-surface-container px-4 py-2 rounded-full">
+<span class="text-sm font-medium text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-sm font-bold text-on-surface focus:ring-0 cursor-pointer">
+<option>Highest Rated</option>
+<option>Price: Low to High</option>
+<option>Experience</option>
+</select>
+</div>
+</div>
+</header>
+<!-- Mentor Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Mentor Card 1: Arjun Mehta -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="relative mb-6">
+<img alt="Arjun Mehta" class="w-full h-48 object-cover rounded-2xl shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1CuZSwAn1C34TglK54nsUFXeBOfYdew48ZxFUmg-z53KJ7LZfiSbj1Hlg5Vbp1IYn61FvHknUXRMAxdJyUIylB8ZouC_O6oACTiWWArDFSEewAxm0BE8ILKxvXo86jZdBjT0nbybYjbO3hAEn8V8x-krUch5WF02jaMyCaibEKEEi8xMJ58qJHU9l4X0yvXhYL1oC0tKti17w83Z5Qn9XFgNQ9ILLfUuScQqMk2rOdivqsRc1J7-HtPcJdZVvxE6QiUz5YhYD3PPj"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px] fill-current" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold text-primary tracking-tight uppercase">Verified</span>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-0.5">Arjun Mehta</h3>
+<p class="text-sm text-primary font-semibold">Senior Architect @ Google</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[#FFB800] text-sm fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.9</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(124 reviews)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">System Design</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Leadership</span>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="border border-outline-variant text-on-surface px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:bg-white transition-colors">View Profile</button>
+<button class="bg-on-secondary-fixed text-white px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Now</button>
+</div>
+<div class="text-center">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-lg font-headline font-extrabold text-on-secondary-fixed">₹799<span class="text-xs font-normal text-outline">/ session</span></span>
+</div>
+</div>
+</div>
+<!-- Mentor Card 2: Sara Williams -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="relative mb-6">
+<img alt="Sara Williams" class="w-full h-48 object-cover rounded-2xl shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBMPQ79Y6sXfbkILYkBK2vFCupwxKBdUZ14Zp_PLAji4R4UBOG99HdRWd91Bi57fvGvM04VYdL8Y4CvHt9W0_h0onjEQPTh9XO-sr58f02Il5yt1C7RPMPa6RrrlBaQ724OeHTYgm3239Xv-ognQv551acW5Y7EAeY_yVHPCQfkMH-tjcg84ZTueXIdKhCx9yK1tg8h5WZd1rBZGwmltlclOnD0m1mPSmQcGkyPSW73nu2ySUFBDPXVAgsMgAh3uoJ8TSZ5JhCS9uW"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px] fill-current" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold text-primary tracking-tight uppercase">Verified</span>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-0.5">Sara Williams</h3>
+<p class="text-sm text-primary font-semibold">VP Engineering @ Stripe</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[#FFB800] text-sm fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">5.0</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(89 reviews)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Frontend</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Team Mgmt</span>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="border border-outline-variant text-on-surface px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:bg-white transition-colors">View Profile</button>
+<button class="bg-on-secondary-fixed text-white px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Now</button>
+</div>
+<div class="text-center">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-lg font-headline font-extrabold text-on-secondary-fixed">₹1299<span class="text-xs font-normal text-outline">/ session</span></span>
+</div>
+</div>
+</div>
+<!-- Mentor Card 3: Priya Kapur -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="relative mb-6">
+<img alt="Priya Kapur" class="w-full h-48 object-cover rounded-2xl shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsnrTIr-TCeIsI_84MMG8CLEbL7s0raoiU6fTH3YiWKXCg3WoeFLvjrRmSzCTx-q17UKyCnj-OUa7dR50k35AzAhMthRGiQNxWCWmiy1ALaFaNBsp0K3x7WyxYdKO6xn_y38Odq-ngKxWE4R_J4KKyUq7mMK_tSaEfPJAo4E3dFQy4Z1DQub1K225V0fL9Bq9Qp3ngQPRTKnPLRWMb0pY6ohg7kXKdlNjRuuSLSR2kHFpZ1NaJfeSHUItDZtCJ1hFyu42SfcnccxG"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px] fill-current" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold text-primary tracking-tight uppercase">Verified</span>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-0.5">Priya Kapur</h3>
+<p class="text-sm text-primary font-semibold">Product Lead @ Meta</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[#FFB800] text-sm fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.8</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(210 reviews)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Strategy</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Growth</span>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="border border-outline-variant text-on-surface px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:bg-white transition-colors">View Profile</button>
+<button class="bg-on-secondary-fixed text-white px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Now</button>
+</div>
+<div class="text-center">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-lg font-headline font-extrabold text-on-secondary-fixed">₹999<span class="text-xs font-normal text-outline">/ session</span></span>
+</div>
+</div>
+</div>
+<!-- Mentor Card 4: Leo Davinci -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="relative mb-6">
+<img alt="Leo Davinci" class="w-full h-48 object-cover rounded-2xl shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2huPmMdc7i-mr4uaU-5c7qUH40MsByJmyuFA0xYMXzzs0szSXerhOAcyHwmRHFibhHmbGbannYGdbOnIcyXLhnGBqmqybXPZy60xNHFqHQm9nly-F_Q6rMumVJ2FAVtGUJfIDqS8S9nkXVE3nhT8poeimEK6EMWSZTfghcrsJYTFxGflmcpcHk6ntXJod3fhpgx_cTqVGNo1U9hl6koNFj7LGhD6BIe375NTclLWntTdRb_yt1jTyeiiTRb7hpNYNL9uhuUteH_oJ"/>
+</div>
+<div class="mb-4">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-0.5">Leo Davinci</h3>
+<p class="text-sm text-primary font-semibold">Senior Dev @ Uber</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[#FFB800] text-sm fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.7</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(56 reviews)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Java</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Distributed</span>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="border border-outline-variant text-on-surface px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:bg-white transition-colors">View Profile</button>
+<button class="bg-on-secondary-fixed text-white px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Now</button>
+</div>
+<div class="text-center">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-lg font-headline font-extrabold text-on-secondary-fixed">₹699<span class="text-xs font-normal text-outline">/ session</span></span>
+</div>
+</div>
+</div>
+<!-- Mentor Card 5: Dr. Helena Vance -->
+<div class="glass-card rounded-3xl p-6 flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+<div class="relative mb-6">
+<img alt="Dr. Helena Vance" class="w-full h-48 object-cover rounded-2xl shadow-sm grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGhuNS8wVKBybgFFugKue9YXURvwBzipTBqHYuaws0sFIB49lBeutpXUT346m433-A2oIhM0aGxVJp77pbX00-cBjhZm7njdBXTWTIZdwbH_qI3NGq8KNDTrW-DIi_qAJUJgkqYACOixrbwWKUHeDtXdSJEY-w-gNgCpLG2jRq2hC3oZVJF3c6LPo-B-6dX0W4NwVbNdiDPDbb1xydQ0WgNy-219rybR_8XnYlpBU8fF_jV3ITMDM7aHGfvIqk72rpq9s-EisGUk7y"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px] fill-current" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold text-primary tracking-tight uppercase">Verified</span>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="font-headline text-xl font-bold text-on-secondary-fixed mb-0.5">Dr. Helena Vance</h3>
+<p class="text-sm text-primary font-semibold">AI Research @ OpenAI</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[#FFB800] text-sm fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.9</span>
+<span class="text-[10px] text-outline ml-1 font-medium">(150 reviews)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">PyTorch</span>
+<span class="px-2.5 py-1 bg-surface-container-low text-[10px] font-bold rounded-lg text-on-surface-variant uppercase tracking-tighter border border-outline-variant/30">Deep Learning</span>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="border border-outline-variant text-on-surface px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:bg-white transition-colors">View Profile</button>
+<button class="bg-on-secondary-fixed text-white px-4 py-2.5 rounded-xl font-headline font-bold text-sm hover:translate-y-[-2px] transition-transform">Book Now</button>
+</div>
+<div class="text-center">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest block">Starting at</span>
+<span class="text-lg font-headline font-extrabold text-on-secondary-fixed">₹2499<span class="text-xs font-normal text-outline">/ session</span></span>
+</div>
+</div>
+</div>
+<!-- Load More Mentors / Join Card -->
+<div class="border-2 border-dashed border-outline-variant rounded-3xl p-8 flex flex-col items-center justify-center text-center gap-6 group cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</div>
+<div>
+<h3 class="font-headline text-lg font-bold text-on-secondary-fixed mb-2">Join as Mentor</h3>
+<p class="text-sm text-on-surface-variant max-w-[200px] mb-6">Help others reach their potential and earn as you mentor.</p>
+<button class="bg-on-secondary-fixed text-white px-8 py-3 rounded-xl font-headline font-bold text-sm transition-all group-hover:bg-on-secondary-fixed-variant">Load More Mentors</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-20 pt-12 border-t border-surface-container-high w-full">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline font-bold text-[#0A2156] mb-2 text-lg">CognitiveSanctuary</span>
+<p class="font-body text-xs tracking-wide text-slate-500">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Terms of Service</a>
+<a class="font-body text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Cookie Policy</a>
+<a class="font-body text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

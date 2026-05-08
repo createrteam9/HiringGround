@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Dashboard | Sovereign AI</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f9f9f9",
+              "surface-tint": "#465c97",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed-dim": "#dcc2a8",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-container": "#5b4834",
+              "on-primary-fixed-variant": "#2e447d",
+              "error": "#ba1a1a",
+              "secondary": "#525d83",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#444650",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#f9dec3",
+              "on-secondary-fixed-variant": "#3a456a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1a3c",
+              "inverse-on-surface": "#f0f1f1",
+              "on-primary-container": "#334a83",
+              "on-tertiary-fixed": "#271908",
+              "on-surface": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "primary-container": "#a5bbfc",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d1",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-background": "#1a1c1c",
+              "primary": "#465c97",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary": "#6f5b45",
+              "tertiary-container": "#d2b89e",
+              "on-primary-fixed": "#001848",
+              "inverse-primary": "#b2c5ff",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container": "#eeeeee",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-container": "#4f5a80",
+              "outline": "#757781",
+              "secondary-container": "#c8d3ff",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed": "#dae2ff",
+              "on-tertiary-fixed-variant": "#554330",
+              "secondary-fixed-dim": "#bac5f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #465C97 0%, #A5BBFC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #465C97 0%, #A5BBFC 100%);
+        }
+        body {
+            background-color: #FAFAFA;
+            color: #1a1c1c;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#F3F3F3] dark:bg-slate-900 flex flex-col p-6 space-y-2 no-border bg-gradient-to-r from-transparent to-[#F3F3F3] z-50">
+<div class="mb-10">
+<span class="text-lg font-manrope font-extrabold text-[#0A2156]">CognitiveSanctuary</span>
+</div>
+<div class="flex items-center space-x-3 mb-8 p-2">
+<img alt="Alex Rivers" class="w-10 h-10 rounded-xl object-cover" data-alt="Professional portrait of a young man with a friendly expression, soft office lighting, editorial photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtCVWnzyJyGdUFentTvrbPXELkB93vwj8QjdPFmJcoKwwNd00zy8ZZotL8ttZjtzO_r5SwdSNkn6IpH6DG99A9s39zROditj0TFKlRB5M8_qf6BStx9NE-e1dIo7Fe1SLmOZD7VJut1p1zkJoyHt_RfTrF2PbLa-cbKu2CrAo5XwuCqRTXJUQaRtUvIa1thPtarrSBB4yRpF4XCd296ZuSHta_EscyBbfx6ECc8emTliN4uN3U-QBCrfcGSWXzFCmEcCKvKPC3Oc7P"/>
+<div>
+<p class="font-inter text-sm font-semibold text-[#0A2156]">Alex Rivers</p>
+<p class="font-inter text-[10px] text-slate-500 uppercase tracking-widest">Senior Candidate</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 px-4 py-3 bg-white dark:bg-slate-800 text-[#0A2156] dark:text-white rounded-lg shadow-sm font-semibold transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_today">calendar_today</span>
+<span class="font-inter text-sm font-medium">My Sessions</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span class="font-inter text-sm font-medium">Mentor Network</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="insights">insights</span>
+<span class="font-inter text-sm font-medium">Growth Plan</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span class="font-inter text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="pt-6 mt-6 border-t border-slate-200/60 dark:border-slate-800">
+<button class="w-full btn-gradient text-white py-3 rounded-full font-bold text-sm shadow-md active:scale-95 transition-all mb-6">
+                Book Session
+            </button>
+<div class="space-y-1">
+<a class="flex items-center space-x-3 px-4 py-2 text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="help">help</span>
+<span class="font-inter text-xs">Help Center</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2 text-slate-500 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+<span class="font-inter text-xs">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 min-h-screen p-8 lg:p-12">
+<!-- Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tighter text-[#0A2156] mb-2">Welcome back, Alex.</h1>
+<p class="text-on-surface-variant font-medium">Your next interview is in <span class="text-primary font-bold">2 days</span>. You're 85% prepared.</p>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-3 bg-surface-container-lowest rounded-full shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="h-10 w-[1px] bg-slate-200 mx-2"></div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sovereign AI Score</p>
+<p class="text-xl font-headline font-extrabold text-[#0A2156]">782 <span class="text-xs text-primary font-bold">/ 1000</span></p>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Upcoming Interviews (Span 8) -->
+<section class="col-span-12 lg:col-span-8 space-y-6">
+<div class="flex justify-between items-center px-2">
+<h2 class="text-xl font-headline font-bold text-[#0A2156]">Upcoming Sessions</h2>
+<a class="text-xs font-bold text-primary hover:underline" href="#">View Schedule</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Session Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-all group border-l-4 border-primary">
+<div class="flex justify-between mb-4">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Technical Deep Dive</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="flex items-center space-x-4 mb-6">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover" data-alt="Professional woman in a blazer, neutral office background, high-end corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJHTxSOdpXT1NoqGDbvlxlXRZGQvm8bkO0UXsrZ1kyNx-uvAd0xzDrTfnGHXKhb0TyZuUn0kXA1cGitUgplq-R00T_I7-X8DBSkdRD1UiVRHDwQg6f2ISYtts_rJ0jofWUFhaee68dJBgwttusS_urFzwGMqRCkytv3WqKzb7F6Fz4Es4vVb2MO4O8ZrgNyBaegCCOeRkYwEVWosyA4hwDYKTJTIforRKyplDCiya8MBHoZQtSUXEfIeGTUypPxo9Wix7fFYFY60m"/>
+<div>
+<h3 class="font-bold text-[#0A2156]">Sarah Chen</h3>
+<p class="text-xs text-on-surface-variant">Lead Engineer at Google</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm pt-4 border-t border-slate-50">
+<div class="flex items-center space-x-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Oct 24, 2024</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>14:00 GMT</span>
+</div>
+</div>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between mb-4">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Culture Fit</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</div>
+<div class="flex items-center space-x-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h3 class="font-bold text-[#0A2156]">Sovereign AI</h3>
+<p class="text-xs text-on-surface-variant">Automated Simulation</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm pt-4 border-t border-slate-50">
+<div class="flex items-center space-x-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Oct 26, 2024</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>09:30 GMT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Past Sessions History -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
+<h3 class="text-lg font-headline font-bold text-[#0A2156] mb-6">Session History</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-3 group">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-lg bg-[#F0F3FA] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="code">code</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#0A2156]">System Design Architecture</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Completed with David Miller</p>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-right">
+<p class="text-xs font-bold text-primary">High Accuracy</p>
+<p class="text-[10px] text-slate-400">Oct 18</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-3 group">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-lg bg-[#F0F3FA] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="psychology">psychology</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#0A2156]">Behavioral Frameworks</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Completed with Sovereign AI</p>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-right">
+<p class="text-xs font-bold text-tertiary">Action Required</p>
+<p class="text-[10px] text-slate-400">Oct 15</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-3 group">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-lg bg-[#F0F3FA] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="terminal">terminal</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#0A2156]">Leetcode Hard: Dynamic Programming</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Completed with Sarah Chen</p>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-right">
+<p class="text-xs font-bold text-primary">Exceptional</p>
+<p class="text-[10px] text-slate-400">Oct 12</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Panels (Span 4) -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Progress Visualization -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-lg font-headline font-bold text-[#0A2156] mb-6">Preparation Velocity</h3>
+<div class="flex items-end justify-between h-32 space-x-2 mb-4">
+<div class="w-full bg-slate-100 rounded-t-lg h-[40%]"></div>
+<div class="w-full bg-slate-100 rounded-t-lg h-[55%]"></div>
+<div class="w-full bg-primary-container rounded-t-lg h-[85%]"></div>
+<div class="w-full bg-primary-container rounded-t-lg h-[70%]"></div>
+<div class="w-full bg-primary rounded-t-lg h-[95%]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-fixed/20 blur-3xl rounded-full"></div>
+</div>
+<!-- AI Recommendation Panel -->
+<div class="bg-[#F0F3FA] p-8 rounded-2xl border border-white/50 shadow-inner">
+<div class="flex items-center space-x-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-sm font-bold text-[#0A2156] uppercase tracking-wide">AI Recommendations</h3>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-white/60 backdrop-blur-md rounded-xl border border-white">
+<p class="text-[10px] font-bold text-primary mb-1 uppercase tracking-tighter">Skill Focus</p>
+<h4 class="text-sm font-bold text-[#0A2156] mb-2">Refine Low-Latency Design</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-3">Your last session showed minor delays in explaining database sharding. Review the system design module.</p>
+<a class="text-xs font-bold text-primary flex items-center" href="#">
+                                Start Module <span class="material-symbols-outlined text-sm ml-1" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="p-4 bg-white/60 backdrop-blur-md rounded-xl border border-white">
+<p class="text-[10px] font-bold text-tertiary mb-1 uppercase tracking-tighter">Communication</p>
+<h4 class="text-sm font-bold text-[#0A2156] mb-2">Structural Answer Framing</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Practice the STAR method for behavioral questions. Your clarity index is currently 72%.</p>
+</div>
+</div>
+</div>
+<!-- Latest Feedback Summary -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-slate-50">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold text-[#0A2156] uppercase tracking-wide">Latest Feedback</h3>
+<span class="text-xs font-bold text-slate-400">Oct 18</span>
+</div>
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-full border-4 border-primary border-r-slate-100 flex items-center justify-center">
+<span class="text-xs font-extrabold text-[#0A2156]">75%</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#0A2156]">Cognitive Depth</p>
+<p class="text-[10px] text-slate-500">Above average for Tier-1 Candidates</p>
+</div>
+</div>
+<div class="p-4 bg-tertiary-container/30 rounded-xl text-xs text-on-tertiary-container italic leading-relaxed">
+                        "Alex exhibits strong analytical fundamentals. Future sessions should push on edge-case handling in distributed environments."
+                    </div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="ml-64 w-auto border-t border-[#F3F3F3] dark:border-slate-800 bg-[#FAFAFA] dark:bg-slate-950">
+<div class="max-w-7xl mx-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center">
+<div class="mb-4 md:mb-0">
+<span class="font-manrope font-bold text-[#0A2156]">CognitiveSanctuary</span>
+<p class="font-inter text-xs tracking-wide text-slate-500 mt-2">© 2024 Cognitive Sanctuary. Editorial Grade Interview Prep.</p>
+</div>
+<div class="flex space-x-8">
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Cookie Policy</a>
+<a class="font-inter text-xs tracking-wide text-slate-500 hover:text-[#465C97] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>
