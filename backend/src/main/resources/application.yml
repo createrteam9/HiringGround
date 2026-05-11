@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: api
+  
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/hiringground}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+
+  mail:
+    host: smtp.hostinger.com
+    port: 465
+    username: ${MAIL_USERNAME:no-reply@hiringground.com}
+    password: ${MAIL_PASSWORD:your-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+
+app:
+  jwtSecret: ${JWT_SECRET:hiringGroundSuperSecretKeyForJwtGenerationMakeSureItIsLongEnough123}
+  jwtExpirationMs: 86400000 # 24 hours
+  storage:
+    provider: ${STORAGE_PROVIDER:local} # "local" or "r2"
+    local:
+      upload-dir: ${LOCAL_UPLOAD_DIR:uploads/}
+    r2:
+      endpoint: ${R2_ENDPOINT:https://<accountid>.r2.cloudflarestorage.com}
+      access-key: ${R2_ACCESS_KEY:}
+      secret-key: ${R2_SECRET_KEY:}
+      bucket: ${R2_BUCKET_NAME:hiringground-assets}
+      public-url: ${R2_PUBLIC_URL:https://pub-<id>.r2.dev}
+
+server:
+  port: ${PORT:8080}

@@ -1,23 +1,63 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { siteConfig } from '@/config/site';
+import { loginSchema, LoginFormData } from '@/lib/validations/auth';
+import { fetchApi } from '@/lib/api';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const { login } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Logging in to ' + siteConfig.name + '...');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    setLoginError(null);
+    try {
+      const response = await fetchApi<any>('/auth/login', {
+        data: {
+          email: data.email,
+          password: data.password,
+        },
+      });
+      
+      console.log('Login success:', response);
+      
+      // Save token and user info to context and localStorage
+      login(response.token, {
+        id: response.id,
+        email: response.email,
+        roles: response.roles
+      });
+      
+      // Force a hard redirect so context reloads or middleware catches it
+      window.location.href = '/dashboard';
+      
+    } catch (err: any) {
+      setLoginError(err.message || 'Invalid email or password');
+    }
   };
 
   const labelClass = "block text-sm text-slate-800 mb-1.5";
   const inputClass = "w-full bg-white border border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-3 py-2.5 text-sm text-slate-900 transition-all outline-none";
+  const inputErrorClass = "border-red-500 focus:border-red-500 focus:ring-red-500";
 
   return (
-    <div className="h-[calc(100vh-64px)] bg-[#F3F2EF] relative flex flex-col justify-center py-4 px-4 sm:px-6 lg:px-8 selection:bg-primary/20 overflow-hidden antialiased">
+    <div className="min-h-[calc(100vh-64px)] bg-[#F3F2EF] relative flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 selection:bg-primary/20 overflow-hidden antialiased">
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex items-center justify-center gap-4 mb-6">
           <Link href="/" className="shrink-0">
@@ -33,19 +73,26 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-2xl py-8 px-6 sm:px-10 shadow-lg shadow-slate-200/50 rounded-2xl border border-slate-200 max-h-[80vh] overflow-y-auto">
-          <form onSubmit={handleLogin} className="space-y-5">
+        <div className="bg-white/80 backdrop-blur-2xl py-8 px-6 sm:px-10 shadow-lg shadow-slate-200/50 rounded-2xl border border-slate-200">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             
+            {loginError && (
+              <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
+                {loginError}
+              </div>
+            )}
+
             <div>
               <label className={labelClass}>Email Address</label>
               <input 
-                required 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
+                {...register('email')}
                 type="email" 
-                className={inputClass} 
+                className={`${inputClass} ${errors.email ? inputErrorClass : ''}`} 
                 placeholder="jane@example.com" 
               />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              )}
             </div>
             
             <div>
@@ -56,24 +103,24 @@ export default function LoginPage() {
                 </Link>
               </div>
               <input 
-                required 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+                {...register('password')}
                 type="password" 
-                className={inputClass} 
+                className={`${inputClass} ${errors.password ? inputErrorClass : ''}`} 
                 placeholder="••••••••" 
               />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              )}
             </div>
 
             <div className="flex items-center">
               <input 
-                id="remember-me" 
+                {...register('rememberMe')}
+                id="rememberMe" 
                 type="checkbox" 
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" 
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-700">
+              <label htmlFor="rememberMe" className="ml-2 block text-sm text-slate-700">
                 Remember me
               </label>
             </div>
@@ -81,9 +128,10 @@ export default function LoginPage() {
             <div className="pt-2">
               <button 
                 type="submit" 
-                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all active:scale-[0.98]"
+                disabled={isSubmitting}
+                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all active:scale-[0.98] disabled:opacity-70"
               >
-                Sign in
+                {isSubmitting ? 'Signing in...' : 'Sign in'}
               </button>
             </div>
           </form>

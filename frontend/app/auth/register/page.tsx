@@ -104,10 +104,40 @@ export default function RegistrationPage() {
     }
   };
 
-  const handleSubmit = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async () => {
     if (validateStep(currentStep)) {
-      console.log('Form submitted:', formData);
-      // Handle actual submission here
+      setIsSubmitting(true);
+      setSubmitError(null);
+      
+      try {
+        // Import dynamic api to avoid build issues if env is missing during static phase
+        const { fetchApi } = await import('@/lib/api');
+        
+        // Transform the frontend data structure into the SignupRequest expected by Spring Boot
+        const signupPayload = {
+          email: formData.email,
+          password: formData.password,
+          // 0: Candidate, 1: Mentor (based on some logic or fixed for now, let's assume Candidate for this general form)
+          role: 0 
+        };
+
+        const response = await fetchApi('/auth/register', {
+          data: signupPayload
+        });
+
+        console.log('Registration Successful:', response);
+        // Redirect to login or show success screen
+        window.location.href = '/login?registered=true';
+        
+      } catch (error: any) {
+        setSubmitError(error.message || 'Registration failed. Please try again.');
+        console.error('Registration error:', error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -322,21 +352,28 @@ export default function RegistrationPage() {
                 </div>
               </div>
 
-              <label className="flex items-start gap-3 mb-6">
-                <input
-                  type="checkbox"
-                  checked={formData.agreeToTerms}
-                  onChange={(e) => setFormData(prev => ({
-                    ...prev,
-                    agreeToTerms: e.target.checked,
-                  }))}
-                  className="w-5 h-5 mt-1"
-                />
-                <span className="text-body-sm">
-                  I agree to the Terms of Service and Privacy Policy. I understand that HiringGround will use my information to match me with mentors and improve the platform.
-                </span>
-              </label>
-              {errors.agreeToTerms && <p className="text-label-sm text-error mb-6">{errors.agreeToTerms}</p>}
+              <div>
+                <label className="flex items-start gap-3 mb-2">
+                  <input
+                    type="checkbox"
+                    checked={formData.agreeToTerms}
+                    onChange={(e) => setFormData(prev => ({
+                      ...prev,
+                      agreeToTerms: e.target.checked,
+                    }))}
+                    className="w-5 h-5 mt-1"
+                  />
+                  <span className="text-body-sm">
+                    I agree to the Terms of Service and Privacy Policy. I understand that HiringGround will use my information to match me with mentors and improve the platform.
+                  </span>
+                </label>
+                {errors.agreeToTerms && <p className="text-label-sm text-error mb-2">{errors.agreeToTerms}</p>}
+                {submitError && (
+                  <div className="p-3 bg-error/10 text-error text-body-sm rounded-md border border-error/20 mb-6">
+                    {submitError}
+                  </div>
+                )}
+              </div>
             </Card>
           )}
 
@@ -346,7 +383,7 @@ export default function RegistrationPage() {
               variant="secondary"
               size="lg"
               onClick={handleBack}
-              disabled={currentStep === 1}
+              disabled={currentStep === 1 || isSubmitting}
             >
               Back
             </Button>
@@ -356,8 +393,9 @@ export default function RegistrationPage() {
                 variant="primary"
                 size="lg"
                 onClick={handleSubmit}
+                disabled={isSubmitting}
               >
-                Complete Registration
+                {isSubmitting ? 'Registering...' : 'Complete Registration'}
               </Button>
             ) : (
               <Button
