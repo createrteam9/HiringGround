@@ -19,7 +19,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.hiringground.api.domain.InterviewHistory;
+import com.hiringground.api.repository.InterviewHistoryRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -32,6 +38,15 @@ public class MentorSlotController {
 
     @Autowired
     UserProfileRepository userProfileRepository;
+
+    @Autowired
+    InterviewHistoryRepository interviewHistoryRepository;
+
+    @Autowired
+    com.hiringground.api.service.EmailService emailService;
+
+    @Autowired
+    com.hiringground.api.repository.UserRepository userRepository;
 
     @PostMapping
     public ResponseEntity<?> createSlots(@Valid @RequestBody CreateSlotRequest request) {
@@ -108,5 +123,92 @@ public class MentorSlotController {
 
         interviewSlotRepository.delete(slot);
         return ResponseEntity.ok(new MessageResponse("Slot deleted successfully."));
+    }
+
+    /**
+     * AUTHENTICATED (MENTOR): Get all booked sessions for this mentor.
+     */
+    @GetMapping("/sessions")
+    public ResponseEntity<?> getMySessions() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        UserProfile profile = userProfileRepository.findByUserId(userDetails.getId())
+                .orElseThrow(() -> new RuntimeException("Error: Profile is not found."));
+
+        List<InterviewHistory> histories = interviewHistoryRepository.findByMentorProfileId(profile.getId());
+
+        List<Map<String, Object>> sessions = histories.stream().map(h -> {
+            Map<String, Object> session = new HashMap<>();
+            session.put("bookingId", h.getId());
+            session.put("status", h.getStatus());
+            session.put("interviewDate", h.getInterviewDate());
+            session.put("isPaid", h.getIsPaid());
+            session.put("rating", h.getRating());
+            session.put("review", h.getReview());
+            // Slot info
+            InterviewSlot slot = h.getInterviewSlot();
+            session.put("slotDate", slot.getDate());
+            session.put("slotTime", slot.getStartTime());
+            session.put("duration", slot.getTimeInterval());
+            session.put("price", slot.getPrice());
+            session.put("candidateId", h.getCandidateId());
+            return session;
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(sessions);
+    }
+    /**
+     * AUTHENTICATED (MENTOR): Update the status of a booked session.
+     * Allowed statuses: COMPLETED, CANCELLED.
+     */
+    @PatchMapping("/sessions/{bookingId}/status")
+    public ResponseEntity<?> updateSessionStatus(
+            @PathVariable Long bookingId,
+            @RequestParam String status) {
+        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        UserProfile mentorProfile = userProfileRepository.findByUserId(userDetails.getId())
+                .orElseThrow(() -> new RuntimeException("Error: Mentor profile not found."));
+
+        InterviewHistory history = interviewHistoryRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Error: Session not found."));
+
+        // Verify ownership: slot belongs to this mentor
+        if (!history.getInterviewSlot().getUserProfile().getId().equals(mentorProfile.getId())) {
+            return ResponseEntity.status(403).body(new MessageResponse("Error: Not authorized."));
+        }
+
+        String newStatus = status.toUpperCase();
+        if (!List.of("COMPLETED", "CANCELLED").contains(newStatus)) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Invalid status. Use COMPLETED or CANCELLED."));
+        }
+
+        history.setStatus(newStatus);
+        interviewHistoryRepository.save(history);
+
+        // Notify Candidate
+        try {
+            com.hiringground.api.domain.User candidate = userRepository.findById(history.getCandidateId()).orElse(null);
+            if (candidate != null) {
+                String subject = "Session Status Update: " + newStatus;
+                String content = "<h1>Session Update</h1>" +
+                        "<p>Hi,</p>" +
+                        "<p>Your mock interview session with <strong>" + mentorProfile.getFirstName() + "</strong> has been marked as <strong>" + newStatus + "</strong>.</p>";
+                
+                if (newStatus.equals("COMPLETED")) {
+                    content += "<p>Please visit the dashboard to provide a rating and review for your mentor.</p>";
+                }
+                
+                content += "<p>Best regards,<br>HiringGround Team</p>";
+                emailService.sendEmail(candidate.getEmail(), subject, content);
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to send status update email: " + e.getMessage());
+        }
+
+        return ResponseEntity.ok(new MessageResponse("Session status updated to " + newStatus));
     }
 }

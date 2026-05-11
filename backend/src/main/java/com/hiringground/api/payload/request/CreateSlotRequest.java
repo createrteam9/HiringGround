@@ -23,8 +23,8 @@ public class CreateSlotRequest {
     private LocalTime endTime;
     
     @NotNull(message = "Duration in minutes is required")
-    @Min(value = 15, message = "Minimum duration is 15 minutes")
-    private Integer durationMinutes; // e.g., 30, 45, 60, custom
+    @Min(value = 10, message = "Minimum duration is 10 minutes")
+    private Integer durationMinutes; // e.g., 20, 45, 60, or custom
     
     private BigDecimal price; // Optional pricing for the slot
 }

@@ -112,10 +112,10 @@ export default function SettingsPage() {
                     accept="image/*"
                     onChange={(e) => handleFileUpload(e, 'picture')} 
                   />
-                  <label htmlFor="profilePic">
-                    <Button variant="secondary" size="sm" as="span" disabled={isUploadingPic} className="cursor-pointer">
+                  <label htmlFor="profilePic" className="cursor-pointer">
+                    <span className={`inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-outline-variant text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors ${isUploadingPic ? 'opacity-50 cursor-not-allowed' : ''}`}>
                       {isUploadingPic ? 'Uploading...' : 'Change Picture'}
-                    </Button>
+                    </span>
                   </label>
                 </div>
               </div>
@@ -140,10 +140,10 @@ export default function SettingsPage() {
                     accept=".pdf,.doc,.docx"
                     onChange={(e) => handleFileUpload(e, 'resume')} 
                   />
-                  <label htmlFor="resume">
-                    <Button variant="outline" size="sm" as="span" disabled={isUploadingResume} className="cursor-pointer">
+                  <label htmlFor="resume" className="cursor-pointer">
+                    <span className={`inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium border border-outline-variant text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors ${isUploadingResume ? 'opacity-50 cursor-not-allowed' : ''}`}>
                       {isUploadingResume ? 'Uploading...' : 'Upload New Resume'}
-                    </Button>
+                    </span>
                   </label>
                 </div>
               </div>

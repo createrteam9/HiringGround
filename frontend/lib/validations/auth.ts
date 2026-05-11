@@ -34,9 +34,7 @@ export const registerPreferencesSchema = z.object({
 });
 
 export const registerTermsSchema = z.object({
-  agreeToTerms: z.literal(true, {
-    errorMap: () => ({ message: 'You must agree to the terms and conditions' }),
-  }),
+  agreeToTerms: z.literal(true, { message: 'You must agree to the terms and conditions' }),
 });
 
 // Complete registration schema combining all steps

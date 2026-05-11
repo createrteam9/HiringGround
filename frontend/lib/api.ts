@@ -37,7 +37,7 @@ export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}):
   }
 
   const text = await response.text();
-  return text ? JSON.parse(text) : {};
+  return (text ? JSON.parse(text) : {}) as T;
 }
 
 export async function uploadFileApi<T>(endpoint: string, formData: FormData, token?: string): Promise<T> {
@@ -69,5 +69,13 @@ export async function uploadFileApi<T>(endpoint: string, formData: FormData, tok
   }
 
   const text = await response.text();
-  return text ? JSON.parse(text) : {};
+  return (text ? JSON.parse(text) : {}) as T;
 }
+
+// Resource APIs
+export const resourceApi = {
+  getAll: (token?: string) => fetchApi<any[]>('/resources', { token }),
+  create: (data: any, token: string) => fetchApi('/resources', { token, data }),
+  like: (id: number, token: string) => fetchApi(`/resources/${id}/like`, { token, method: 'POST' }),
+  dislike: (id: number, token: string) => fetchApi(`/resources/${id}/dislike`, { token, method: 'POST' }),
+};

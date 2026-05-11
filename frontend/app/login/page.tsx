@@ -148,20 +148,20 @@ export default function LoginPage() {
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div>
-                <Link
-                  href="#"
+                <a
+                  href={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/../oauth2/authorization/google`}
                   className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-lg shadow-sm bg-white text-sm font-medium text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   <img className="h-5 w-5" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
-                </Link>
+                </a>
               </div>
               <div>
-                <Link
-                  href="#"
+                <a
+                  href={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/../oauth2/authorization/linkedin`}
                   className="w-full inline-flex justify-center py-2 px-4 border border-slate-300 rounded-lg shadow-sm bg-white text-sm font-medium text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   <img className="h-5 w-5" src="https://www.svgrepo.com/show/448234/linkedin.svg" alt="LinkedIn" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>

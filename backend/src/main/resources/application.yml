@@ -38,6 +38,24 @@ spring:
           ssl:
             enable: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:your-google-id}
+            client-secret: ${GOOGLE_CLIENT_SECRET:your-google-secret}
+            scope:
+              - email
+              - profile
+          linkedin:
+            client-id: ${LINKEDIN_CLIENT_ID:your-linkedin-id}
+            client-secret: ${LINKEDIN_CLIENT_SECRET:your-linkedin-secret}
+            scope:
+              - openid
+              - profile
+              - email
+
 app:
   jwtSecret: ${JWT_SECRET:hiringGroundSuperSecretKeyForJwtGenerationMakeSureItIsLongEnough123}
   jwtExpirationMs: 86400000 # 24 hours
@@ -54,3 +72,8 @@ app:
 
 server:
   port: ${PORT:8080}
+
+razorpay:
+  key:
+    id: ${RAZORPAY_KEY_ID:rzp_test_placeholder}
+    secret: ${RAZORPAY_KEY_SECRET:secret_placeholder}
