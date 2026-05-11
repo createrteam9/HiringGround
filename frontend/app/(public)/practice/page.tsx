@@ -68,7 +68,10 @@ export default function PracticeDashboard() {
                 {mode.description}
               </p>
               
-              <Link href="/practice/session" className="inline-flex items-center justify-center gap-2 w-full py-3 bg-slate-900 hover:bg-primary text-white rounded-xl font-medium text-sm transition-colors shadow-sm">
+              <Link 
+                href={`/practice/session?track=${mode.id}`} 
+                className="inline-flex items-center justify-center gap-2 w-full py-3 bg-slate-900 hover:bg-primary text-white rounded-xl font-medium text-sm transition-colors shadow-sm"
+              >
                 <span className="material-symbols-outlined text-lg">play_arrow</span>
                 Start AI Session
               </Link>

@@ -1,0 +1,91 @@
+User 
+➖
+ 
+Id                  
+Email            
+Phone          
+[Primary Key] [Auto Increment] [Int]  
+[Varchar] 
+[Varchar] 
+Password    [Varchar] 
+Role             
+[Int] 
+Created_Date  [DateTime] 
+Updated_Date  [DateTime] 
+Password_Update_Date  [DateTime] 
+Status  [Int] 
+ID          
+User_Profile 
+➖
+ 
+[Primary Key] [Auto Increment] [Int]  
+UserId   [Foreign Key(User)] [Int]  
+First Name   [Varchar] 
+Last Name   [Varchar] 
+ProfileImg_Url   [Varchar] 
+Bio [Varchar] 
+Clg_Name [Varchar] 
+Current Company[Varchar] 
+Prvious_Company[Varchar] 
+Current Position [Varchar] 
+YearsOf_Experience [INT] 
+Target_Role [Varchar] 
+LinkedIn_Url [Varchar] 
+GitHub_Url [Varchar] 
+Resume_Url [Varchar] 
+interests_Tags [varchar] 
+ID          
+Interview_Available_Slots 
+➖
+ 
+[Primary Key] [Auto Increment] [Int]  
+UserId   [Foreign Key(User_Profile)] [Int]  
+Date  [Date] 
+Time_Interval  [Int] 
+StartTime [Time] 
+IsDefault [Bool] 
+Price  [Float] 
+IsBooked  [Bool] 
+Interview_History 
+➖
+ 
+ID          
+[Primary Key] [Auto Increment] [Int]  
+InterviewId   [Foreign Key(Interview_Available_Slot)] [Int]  
+Candidate_Id [Int] 
+Interview_Date [Date] 
+Status [Boolean] 
+Rating [float] 
+Review[varchar] 
+IsPaid[Boolean] 
+ID          
+Meeting_Details 
+➖ 
+[Primary Key] [Auto Increment] [Int]  
+InterviewId   [Foreign Key(Interview_History)] [Int]  
+Problem_Statement [Text] 
+Solution [Text] 
+Transaction 
+➖
+ 
+TID          
+[Primary Key] [Auto Increment] [Int]  
+InterviewId   [Foreign Key(Interview_History)] [Int] 
+Trasaction_ID[int] 
+Amount[decimal] 
+Report
+➖
+ 
+ID          
+[Primary Key] [Auto Increment] [Int] 
+InterviewId   [Foreign Key(Interview_History)] [Int] 
+Technical_rating [float]  
+Technical_review [varchar] 
+Communication_rating [float]  
+Communication_review [varchar] 
+Situation_managemet_rating [float] 
+Situation_review [varchar] 
+Strengths [varchar] 
+Weakness [varchar] 
+Suggestions [varchar] 
+ 

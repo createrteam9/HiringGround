@@ -1,201 +1,337 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import {
+  Users,
+  BrainCircuit,
+  Map,
+  ArrowRight,
+  CheckCircle2,
+  Star,
+  Quote,
+  TrendingUp,
+  ShieldCheck,
+  Zap
+} from 'lucide-react';
 import Footer from '@/app/components/layout/Footer';
 import { siteConfig } from '@/config/site';
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter';
+import LogoMarquee from '@/app/components/ui/LogoMarquee';
+import TestimonialSlider from '@/app/components/ui/TestimonialSlider';
+
+const services = [
+  {
+    title: "Mock Interviews",
+    description: "Connect with industry veterans from Google, Meta, and Netflix for role-specific simulations that mirror real-world pressure.",
+    details: "Industry-standard IT Professionals",
+    icon: <Users className="w-8 h-8 text-primary" />,
+    color: "bg-primary-container/20",
+    link: "/mentors"
+  },
+  {
+    title: "Stress Consultancy",
+    description: "Master technical and psychological resilience through sessions with IT experts and professional psychiatrists.",
+    details: "IT Pros & Psychiatrists",
+    icon: <BrainCircuit className="w-8 h-8 text-tertiary" />,
+    color: "bg-tertiary-container/20",
+    link: "/mentors"
+  },
+  {
+    title: "Career Roadmap",
+    description: "Engineer your growth with data-backed consultation to navigate transitions, promotions, and industry shifts.",
+    details: "Expert Career Consultants",
+    icon: <Map className="w-8 h-8 text-secondary" />,
+    color: "bg-secondary-container/20",
+    link: "/resources"
+  }
+];
 
 export default function LandingPage() {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="bg-surface selection:bg-primary/20"
+    >
       {/* Hero Section */}
-      <section className="relative px-8 pt-24 pb-32 max-w-7xl mx-auto overflow-hidden">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="z-10">
-            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-primary uppercase bg-primary-fixed rounded-full">{siteConfig.name}</span>
-            <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-[#0A2156] leading-[1.1] tracking-tight mb-8">
-              Practice Real <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Interviews</span> with Industry Experts.
-            </h1>
-            <p className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-lg leading-relaxed">
-              Master the art of the interview through editorial-grade simulations. Transition from high-anxiety to authoritative calm with AI-driven insights.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/register">
-                <button className="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-full font-headline font-bold text-lg shadow-lg hover:opacity-90 transition-all active:scale-[0.98]">
-                  Get Started
-                </button>
-              </Link>
-              <Link href="/mentors">
-                <button className="bg-surface-container-lowest border border-outline-variant/20 px-8 py-4 rounded-full font-headline font-bold text-lg text-[#0A2156] hover:bg-surface-container-low transition-all">
-                  View Mentors
-                </button>
-              </Link>
-            </div>
-            <div className="mt-12 flex items-center gap-4 text-sm text-slate-500">
-              <div className="flex -space-x-3">
-                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6s4uayIDG1dfXCrXgTZjo4d2VxDB0P0zCbOSrlAYh5HgLenaj8cAU9j1nUWRsbvhfplN1ZsZ03H8hM3VKCz3oNblWzxfA8TR5RFO5lrn2nCfH8lv4Yplfh_4z00Er1eT3Ta5lBKDmZgIg9QPJ9Qa6UouTo_uiIJQJdutv1NLowL8pgiZjshQN-MIEQMC9G9CZ-JYxByBdk90yqO_5jYNE7ByqaQzf8_OzopR6W0ksgrJKRM561ymNxyQ3SDII1AQ3m7MGVlcTmkWZ" />
-                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc-zB9G-LntiQijoSwrNVT3T39gEiKgb17Hy6orzV0TU1zADxbSCtA9zhtQKiDDPjEAPagPLevFKWm8k1t3jHRQBJL_TpZ8laCwvwvpYb_pM2ZdUnyrkSRxcQFOJQjNczZkDsSu6VoZp1VHZMCb_41use5echNPdeXbMwa7-m63b9WYVFUxZ31SE635aya4iVKPW-S7tXbp9-xZYv1nOTYh8qgnnFbySsVSvojDr-id0A4ZXt4SlqDxHKoWaVWklhdZOMZvM9B7k6N" />
-                <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDucTWeVknJii9VYkW8G_SiRopxlIiDRhKpvf7Q7yIs7nmeeB0VGTexY-BXXCCNbfRX6eBILMgliipALpkBs4miWqgrSLJD8sHfHTRUNecKJ77fsSsnbGhQ4tij6QSPIrYiowApULc5yyHW-zSSnaWtCIH45s18TwtjQ86j3wFFXrBtDeJUQTsGNExkAjgDgzeJ4LS0nvREAiF3Q_-VZLxnezedTFpJ_0hmMBa1yHcZvr107kwbncwb6VZ1vesNRRLPrxPnY21_nYCy" />
+      <section className="relative pt-5 pb-24 px-8 overflow-hidden">
+        {/* Background Decor */}
+        <div className="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 -z-10 w-[500px] h-[500px] bg-tertiary/5 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/10 mb-8">
+                <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-headline font-bold tracking-widest text-primary uppercase">
+                  {siteConfig.name} Platform
+                </span>
               </div>
-              <p>Joined by 2,000+ candidates this month</p>
-            </div>
-          </div>
-          <div className="relative">
-            {/* Asymmetric Hero Visual */}
-            <div className="relative z-10 glass-card p-4 rounded-2xl shadow-2xl overflow-hidden border border-white/40">
-              <img className="rounded-xl w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFVW6qJhAABO51_RQgQnl4zTB1AQVBLDzt8mAcUgaoetzktU9GR-M6ElARgLpBmOzCJrIEIf3NyJdO4KTNbxna7hx2SRwKD5BQ4W8tR68Yb73MpWiLFUK4u_HJ4w7m1mvKQZXqccbtX541avDA5MzOJNlB6g4r5WnbSkngZxPLYFWF48XwTLJtU6V-K6mMWHXpMps1Gq0c-_fPmMxSZxG0njhG8WK9hJuv9z2vsSGkb6Hayn8_WX4NOInm6ivT3NQjaG8-BvqcUlzv" />
-              <div className="absolute bottom-8 right-8 glass-card p-6 rounded-xl shadow-xl border border-white/50 max-w-xs">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>insights</span>
-                  <span className="font-headline font-bold text-[#0A2156]">Real-time Clarity</span>
+
+              <h1 className="font-headline text-6xl md:text-8xl font-black text-[#0A2156] leading-[1.05] tracking-tight mb-8">
+                Scale Your <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-primary">
+                  Career
+                </span> with Experts.
+              </h1>
+
+              <p className="text-xl md:text-2xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed font-body">
+                Experience hyper-realistic mock interviews, stress-resilience training, and strategic career roadmaps designed by billion-dollar company insiders.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link href="/register">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-[#0A2156] text-white px-10 py-5 rounded-2xl font-headline font-extrabold text-xl shadow-2xl shadow-primary/20 hover:bg-primary transition-colors flex items-center gap-3"
+                  >
+                    Start Your Journey
+                    <ArrowRight className="w-6 h-6" />
+                  </motion.button>
+                </Link>
+                <Link href="/mentors">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white border-2 border-outline-variant/20 px-10 py-5 rounded-2xl font-headline font-extrabold text-xl text-[#0A2156] hover:bg-surface-container-lowest transition-colors"
+                  >
+                    View Mentors
+                  </motion.button>
+                </Link>
+              </div>
+
+              <div className="mt-16 flex items-center gap-6">
+                <div className="flex -space-x-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <img
+                      key={i}
+                      className="w-12 h-12 rounded-full border-4 border-surface object-cover"
+                      src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                      alt="User avatar"
+                    />
+                  ))}
+                  <div className="w-12 h-12 rounded-full border-4 border-surface bg-primary-container flex items-center justify-center text-primary font-bold text-xs">
+                    +2k
+                  </div>
                 </div>
-                <p className="text-xs text-on-surface-variant leading-relaxed">AI analyzes your tone, pacing, and keyword relevance to provide instantaneous behavioral corrections.</p>
+                <div className="text-sm">
+                  <p className="font-headline font-bold text-[#0A2156]">Trusted by 2,000+ candidates</p>
+                  <div className="flex text-amber-400 gap-0.5 mt-1">
+                    {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={14} fill="currentColor" />)}
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* Background Decor */}
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-12 -left-12 w-96 h-96 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative z-10 glass-card p-6 rounded-[2.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border-white/60">
+                <img
+                  className="rounded-[2rem] w-full h-[600px] object-cover"
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1000"
+                  alt="Professional Interview"
+                />
+
+                {/* Floating Elements */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -left-12 top-1/4 glass-panel p-5 rounded-2xl shadow-xl border border-white/40 max-w-[200px]"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-green-100 rounded-lg">
+                      <ShieldCheck className="w-5 h-5 text-green-600" />
+                    </div>
+                    <span className="font-headline font-bold text-xs text-[#0A2156]">Verified Experts</span>
+                  </div>
+                  <p className="text-[10px] text-on-surface-variant leading-tight">All mentors are from industry-standard IT companies.</p>
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  className="absolute -right-8 bottom-1/4 glass-panel p-5 rounded-2xl shadow-xl border border-white/40"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-primary-container rounded-lg">
+                      <Zap className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="font-headline font-bold text-xs text-[#0A2156]">Live Feedback</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-primary"
+                      animate={{ width: ["30%", "90%", "30%"] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Trust Signals */}
-      <section className="py-16 bg-surface-container-low">
-        <div className="max-w-7xl mx-auto px-8">
-          <p className="text-center font-headline font-bold text-xs uppercase tracking-[0.2em] text-slate-400 mb-10">Trusted by candidates now at</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <span className="text-2xl font-headline font-black text-[#0A2156]">GOOGLE</span>
-            <span className="text-2xl font-headline font-black text-[#0A2156]">STRIPE</span>
-            <span className="text-2xl font-headline font-black text-[#0A2156]">LINEAR</span>
-            <span className="text-2xl font-headline font-black text-[#0A2156]">AIRBNB</span>
-            <span className="text-2xl font-headline font-black text-[#0A2156]">VERCEL</span>
-          </div>
-        </div>
+      {/* Trust Signals - Auto Marquee */}
+      <section className="border-y border-outline-variant/10">
+        <LogoMarquee />
       </section>
 
-      {/* Features Bento Grid */}
+      {/* Services Section */}
       <section className="py-32 px-8 max-w-7xl mx-auto">
-        <div className="mb-20">
-          <h2 className="font-headline text-4xl font-extrabold text-[#0A2156] tracking-tight mb-4">Master the Narrative.</h2>
-          <p className="text-on-surface-variant max-w-xl text-lg">Our platform is designed to emulate the physical presence of a high-stakes interview environment.</p>
+        <div className="text-center mb-24">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-primary font-headline font-black tracking-widest uppercase text-sm"
+          >
+            Our Ecosystem
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="font-headline text-5xl md:text-6xl font-black text-[#0A2156] mt-4 mb-6"
+          >
+            What we offer
+          </motion.h2>
+          <p className="text-on-surface-variant text-xl max-w-2xl mx-auto leading-relaxed font-body">
+            We provide a comprehensive platform to transform your professional profile from every angle.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Large Card */}
-          <div className="md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/5">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group relative bg-surface-container-lowest p-10 rounded-[2.5rem] border border-outline-variant/5 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden"
+            >
+              <div className={`w-20 h-20 ${service.color} rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500`}>
+                {service.icon}
+              </div>
+              <h3 className="font-headline text-2xl font-black text-[#0A2156] mb-4">{service.title}</h3>
+              <p className="text-on-surface-variant leading-relaxed mb-6 font-body text-lg">
+                {service.description}
+              </p>
+              <div className="flex items-center gap-2 mb-8 py-2 px-4 bg-surface-container-low rounded-xl w-fit">
+                <CheckCircle2 className="w-4 h-4 text-primary" />
+                <span className="text-xs font-headline font-bold text-[#0A2156] uppercase tracking-wider">{service.details}</span>
+              </div>
+              <Link href={service.link} className="flex items-center gap-2 text-primary font-headline font-black group-hover:gap-4 transition-all">
+                Learn More
+                <ArrowRight size={20} />
+              </Link>
+
+              {/* Decorative Background Element */}
+              <div className={`absolute -right-8 -bottom-8 w-32 h-32 ${service.color} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Metrics Section - Running Numbers */}
+      <section className="py-24 bg-[#0A2156] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center text-white">
             <div>
-              <span className="material-symbols-outlined text-primary mb-6 text-4xl">video_chat</span>
-              <h3 className="font-headline text-2xl font-bold text-[#0A2156] mb-4">Live Mock Interviews</h3>
-              <p className="text-on-surface-variant leading-relaxed max-w-md">Connect with industry veterans from FAANG and high-growth startups for 1-on-1 simulations that mirror the exact pressure of the real thing.</p>
+              <div className="font-headline text-6xl font-black mb-2 text-primary-container">
+                <AnimatedCounter value={98} suffix="%" />
+              </div>
+              <p className="text-sm font-headline font-bold tracking-[0.2em] uppercase text-slate-400">Offer Success</p>
             </div>
-            <div className="mt-12 flex items-center gap-4 group cursor-pointer">
-              <span className="font-headline font-bold text-primary group-hover:underline">Explore Mentor Network</span>
-              <span className="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div>
+              <div className="font-headline text-6xl font-black mb-2 text-primary-container">
+                <AnimatedCounter value={15} suffix="k+" />
+              </div>
+              <p className="text-sm font-headline font-bold tracking-[0.2em] uppercase text-slate-400">Mock Sessions</p>
             </div>
-          </div>
-          {/* Secondary Card */}
-          <div className="bg-tertiary-container p-10 rounded-2xl shadow-sm border border-outline-variant/5">
-            <span className="material-symbols-outlined text-on-tertiary-container mb-6 text-4xl">description</span>
-            <h3 className="font-headline text-2xl font-bold text-on-tertiary-container mb-4">Feedback Reports</h3>
-            <p className="text-on-tertiary-fixed-variant leading-relaxed">Editorial-grade review of your performance, broken down by technical accuracy and soft-skill proficiency.</p>
-          </div>
-          {/* AI Recommendations */}
-          <div className="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/5">
-            <span className="material-symbols-outlined text-primary mb-6 text-4xl">psychology</span>
-            <h3 className="font-headline text-2xl font-bold text-[#0A2156] mb-4">AI Recommendations</h3>
-            <p className="text-on-surface-variant leading-relaxed">Dynamic growth plans generated after every session, highlighting the exact areas where you need more polish.</p>
-          </div>
-          {/* Wide Feature */}
-          <div className="md:col-span-2 relative overflow-hidden bg-[#0A2156] p-10 rounded-2xl flex items-center shadow-xl">
-            <div className="relative z-10 w-full md:w-1/2">
-              <h3 className="font-headline text-2xl font-bold text-white mb-4">The Focus Glass Engine</h3>
-              <p className="text-slate-300 leading-relaxed mb-8">Our proprietary environment removes UI friction, allowing you to focus purely on human interaction while AI works silently in the background.</p>
-              <button className="bg-primary text-white px-6 py-2.5 rounded-full font-headline font-bold text-sm">See it in action</button>
+            <div>
+              <div className="font-headline text-6xl font-black mb-2 text-primary-container">
+                <AnimatedCounter value={500} suffix="+" />
+              </div>
+              <p className="text-sm font-headline font-bold tracking-[0.2em] uppercase text-slate-400">Mentors</p>
             </div>
-            <div className="absolute right-0 top-0 h-full w-1/2 hidden md:block">
-              <div className="h-full w-full bg-gradient-to-l from-primary/30 to-transparent"></div>
+            <div>
+              <div className="font-headline text-6xl font-black mb-2 text-primary-container">
+                <AnimatedCounter value={40} suffix="%" />
+              </div>
+              <p className="text-sm font-headline font-bold tracking-[0.2em] uppercase text-slate-400">Salary Hike</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Metrics/Stats Section */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-          <div>
-            <p className="font-headline text-5xl font-extrabold text-[#0A2156] mb-2">94%</p>
-            <p className="text-sm text-slate-500 font-medium tracking-wide uppercase">Offer Success Rate</p>
-          </div>
-          <div>
-            <p className="font-headline text-5xl font-extrabold text-[#0A2156] mb-2">12k+</p>
-            <p className="text-sm text-slate-500 font-medium tracking-wide uppercase">Mock Sessions</p>
-          </div>
-          <div>
-            <p className="font-headline text-5xl font-extrabold text-[#0A2156] mb-2">450+</p>
-            <p className="text-sm text-slate-500 font-medium tracking-wide uppercase">Industry Mentors</p>
-          </div>
-          <div>
-            <p className="font-headline text-5xl font-extrabold text-[#0A2156] mb-2">35%</p>
-            <p className="text-sm text-slate-500 font-medium tracking-wide uppercase">Avg. Salary Increase</p>
-          </div>
+      {/* Testimonials Section - Auto Swapping */}
+      <section className="py-32 px-8 max-w-7xl mx-auto overflow-hidden">
+        <div className="text-center mb-16">
+          <h2 className="font-headline text-5xl md:text-6xl font-black text-[#0A2156] tracking-tight">The Success Stories</h2>
         </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-32 px-8 max-w-7xl mx-auto">
-        <h2 className="font-headline text-4xl font-extrabold text-[#0A2156] text-center mb-20 tracking-tight">The candidate experience.</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-surface-container-lowest p-12 rounded-2xl border border-outline-variant/10">
-            <div className="flex gap-1 mb-6 text-primary">
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-            </div>
-            <p className="text-xl font-body italic text-on-surface-variant mb-10 leading-relaxed">
-              &quot;{siteConfig.name} changed how I perceive high-pressure calls. The AI feedback on my pacing was a wake-up call I didn't know I needed.&quot;
-            </p>
-            <div className="flex items-center gap-4">
-              <img className="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT3Pm9WFTd7nOzHCG5Z_bm0dQtilI5k3F2kdRuP94L4YiZ_F7mw2SRpQ4Ob0MZknDCkanCpuLWFZBIicwcOGhDpsjZb_VelRC80l86-WNx7otRz3w3fetbv4DjCKABmCMAOtVDR_rmCcFAuVxEOKcXoK5URi9pHRSzZI0CmEjNAdEvU63bUmGeTmFPjnjgoJ9VbKtJmIK4SdA6_bScGI8Q1ES9Oy5ISVn-SZyIInfBU7gbBa4ycDCyuIRgvd1z7gmKr3OyvRUhmPxi" />
-              <div>
-                <p className="font-headline font-bold text-[#0A2156]">Marcus Thorne</p>
-                <p className="text-xs text-slate-500 uppercase font-bold tracking-tighter">Senior Engineer @ Stripe</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-surface-container-lowest p-12 rounded-2xl border border-outline-variant/10">
-            <div className="flex gap-1 mb-6 text-primary">
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', fontVariationSettings: "'FILL' 1" }}>star</span>
-            </div>
-            <p className="text-xl font-body italic text-on-surface-variant mb-10 leading-relaxed">
-              "The mentors here don't just ask questions—they teach you the mindset behind the rubric. I landed three offers within two weeks of my last session."
-            </p>
-            <div className="flex items-center gap-4">
-              <img className="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBfJTyD6vFb4848AbcTmobSYwvxQsp-5g_NXs4pmCP71_iLglRwQaPhhzivEywPFjeNgSjQlsVsqNgNS5TUkOIj_riwa1JCo5b3A_dAQBEybDd3ThZ_EJ7fk_VWUk9pbIlqPwku8YCdqvc14uFak5z1Y0AYk8H6ookl0R3D2ZwaP63EyYO42_FNGy1YhqWOUaUzgRMZROOxK3EtgqfkxnBxZaMeEEZwWiJn9ecP_BVMe7ZMF4TTERB6BtWZhFTGyBIuNzbnycxqBCD" />
-              <div>
-                <p className="font-headline font-bold text-[#0A2156]">Elena Rodriguez</p>
-                <p className="text-xs text-slate-500 uppercase font-bold tracking-tighter">Product Lead @ Linear</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TestimonialSlider />
       </section>
 
       {/* CTA Section */}
       <section className="py-32 px-8">
-        <div className="max-w-5xl mx-auto glass-card p-16 rounded-[2rem] text-center border border-white/40 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-primary-container/20 -z-10"></div>
-          <h2 className="font-headline text-4xl md:text-5xl font-extrabold text-[#0A2156] mb-6 tracking-tight leading-tight">Ready to master your next <br />career-defining moment?</h2>
-          <p className="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto">Join the hundreds of candidates who have transitioned from nervous applicants to confident experts this month.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-gradient-to-br from-primary to-primary-container text-white px-10 py-4 rounded-full font-headline font-bold text-lg shadow-lg hover:opacity-90 transition-all active:scale-[0.98]">Get Started Now</button>
-            <button className="bg-white border border-outline-variant/30 px-10 py-4 rounded-full font-headline font-bold text-lg text-[#0A2156] hover:bg-slate-50 transition-all">Schedule a Demo</button>
+        <div className="max-w-6xl mx-auto relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-container to-tertiary rounded-[3rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+          <div className="relative bg-white border border-outline-variant/10 p-16 md:p-24 rounded-[3rem] text-center overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2" />
+
+            <h2 className="font-headline text-5xl md:text-7xl font-black text-[#0A2156] mb-8 tracking-tight leading-tight">
+              Ready to master your <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">
+                next big leap?
+              </span>
+            </h2>
+
+            <p className="text-on-surface-variant text-xl md:text-2xl mb-14 max-w-3xl mx-auto leading-relaxed font-body">
+              Join hundreds of candidates who have transitioned from nervous applicants to confident experts this month.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link href="/register">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-[#0A2156] text-white px-12 py-5 rounded-2xl font-headline font-black text-xl shadow-2xl shadow-primary/20"
+                >
+                  Get Started Free
+                </motion.button>
+              </Link>
+              <Link href="/about">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white border-2 border-[#0A2156] px-12 py-5 rounded-2xl font-headline font-black text-xl text-[#0A2156]"
+                >
+                  How it Works
+                </motion.button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
       <Footer />
-    </>
+    </motion.div>
   );
 }
+
